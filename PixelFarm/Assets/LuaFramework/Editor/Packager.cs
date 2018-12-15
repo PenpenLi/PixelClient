@@ -51,6 +51,12 @@ public class Packager {
         BuildAssetResource(BuildTarget.StandaloneWindows);
     }
 
+    [MenuItem("LuaFramework/Build Mac Resource", false, 103)]
+    public static void BuildMacResource()
+    {
+        BuildAssetResource(BuildTarget.StandaloneOSXIntel);
+    }
+
     /// <summary>
     /// 生成绑定素材
     /// </summary>
@@ -161,17 +167,20 @@ public class Packager {
         string resPath = AppDataPath + "/" + AppConst.AssetDir + "/";
         if (!Directory.Exists(resPath)) Directory.CreateDirectory(resPath);
 
+        AddBuildMap("Common_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Common/UIPrefabs");
+        AddBuildMap("Common_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Common/UIAssets");
+
         AddBuildMap("Loading_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Loading/UIPrefabs");
         AddBuildMap("Loading_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Loading/UIAssets");
 
-        AddBuildMap("Login_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Login/UIPrefabs");
-        AddBuildMap("Login_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Login/UIAssets");
+        //AddBuildMap("Login_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Login/UIPrefabs");
+        //AddBuildMap("Login_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Login/UIAssets");
 
-        AddBuildMap("Main_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Main/UIPrefabs");
-        AddBuildMap("Main_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Main/UIAssets");
+        //AddBuildMap("Main_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Main/UIPrefabs");
+        //AddBuildMap("Main_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Main/UIAssets");
 
-        AddBuildMap("Map_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Map/UIPrefabs");
-        AddBuildMap("Map_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Map/UIAssets");
+        //AddBuildMap("Map_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Map/UIPrefabs");
+        //AddBuildMap("Map_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Map/UIAssets");
     }
 
     /// <summary>

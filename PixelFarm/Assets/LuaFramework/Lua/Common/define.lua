@@ -1,7 +1,11 @@
 
+AppName = ""
+
+MoudleNames = {}
+
 CtrlNames = {}
 
-PanelNames = {}
+ViewNames = {}
 
 --协议类型--
 ProtocalType = {
