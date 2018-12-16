@@ -142,10 +142,10 @@ public class SocketClient {
     /// 打印字节
     /// </summary>
     /// <param name="bytes"></param>
-    void PrintBytes() {
+    void PrintBytes(byte[] bytes) {
         string returnStr = string.Empty;
-        for (int i = 0; i < byteBuffer.Length; i++) {
-            returnStr += byteBuffer[i].ToString("X2");
+        for (int i = 0; i < bytes.Length; i++) {
+            returnStr += bytes[i].ToString("X2");
         }
         Debug.LogError(returnStr);
     }
@@ -203,9 +203,16 @@ public class SocketClient {
     void OnReceivedMessage(MemoryStream ms) {
         BinaryReader r = new BinaryReader(ms);
         byte[] message = r.ReadBytes((int)(ms.Length - ms.Position));
-        //int msglen = message.Length;
 
-        ByteBuffer buffer = new ByteBuffer(message);
+        //PrintBytes(message);
+
+        byte[] resMsg = new byte[message.Length + 4];
+        Buffer.BlockCopy(message,0,resMsg,0,2);
+        byte[] lenBytes = BitConverter.GetBytes(message.Length - 2);
+        Buffer.BlockCopy(lenBytes, 0, resMsg, 2, 4);
+        Buffer.BlockCopy(message, 2, resMsg, 6, message.Length-2);
+
+        ByteBuffer buffer = new ByteBuffer(resMsg);
         int mainId = buffer.ReadShort();
         NetworkManager.AddEvent(mainId, buffer);
     }

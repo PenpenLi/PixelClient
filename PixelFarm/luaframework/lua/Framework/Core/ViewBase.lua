@@ -12,6 +12,8 @@ function ViewBase:ctor(bundleName, viewName, parent, ...)
     self.args = {...} 
     self.OpenViewCallback = nil
     self.iCtrl = nil -- 控制器
+
+    self.transform = nil
 end
 
 -- 刷新界面
@@ -41,9 +43,14 @@ function ViewBase:Create()
     resMgr:LoadPrefab(self.bundleName .. "_prefab", {self.viewName},function (prefabs)
         if prefabs and prefabs[0] then
             local obj = newObject(prefabs[0])
-            obj:GetTransform():SetParent(self.parent)
+            obj.transform:SetParent(self.parent.transform, false)
+            obj.transform.localPosition = Vector3(0,0,0)
+            obj.transform.localScale = Vector3(1,1,1)
             obj.name = tostring(self.viewName)
 
+            self.transform = obj.transform
+            self.gameObject = obj
+            self:OnCreate(obj)
             if self.OpenViewCallback then self.OpenViewCallback(self.viewName) end
         end
     end)

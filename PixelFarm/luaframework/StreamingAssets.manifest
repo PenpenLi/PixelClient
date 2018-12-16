@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2256070169
+CRC: 4198034282
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -7,4 +7,13 @@ AssetBundleManifest:
       Dependencies: {}
     Info_1:
       Name: loading_prefab.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: login_prefab.unity3d
+      Dependencies: {}
+    Info_3:
+      Name: main_prefab.unity3d
+      Dependencies: {}
+    Info_4:
+      Name: map_asset.unity3d
       Dependencies: {}

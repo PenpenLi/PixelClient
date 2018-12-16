@@ -100,7 +100,7 @@ public static class CustomSettings
       
         _GT(typeof(Behaviour)),
         _GT(typeof(MonoBehaviour)),        
-        _GT(typeof(GameObject)),
+        _GT(typeof(GameObject)).AddExtendType(typeof(Extensions)),
         _GT(typeof(TrackedReference)),
         _GT(typeof(Application)),
         _GT(typeof(Physics)),
@@ -177,6 +177,10 @@ public static class CustomSettings
         _GT(typeof(ResourceManager)),
 
     #region PixelFarm
+        _GT(typeof(Slider)),
+        _GT(typeof(InputField)),
+        _GT(typeof(PlayerPrefs)),
+
         _GT(typeof(UGUIEventListener)),
     #endregion
     };

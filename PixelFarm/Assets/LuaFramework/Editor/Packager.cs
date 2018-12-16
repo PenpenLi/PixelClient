@@ -167,20 +167,22 @@ public class Packager {
         string resPath = AppDataPath + "/" + AppConst.AssetDir + "/";
         if (!Directory.Exists(resPath)) Directory.CreateDirectory(resPath);
 
-        AddBuildMap("Common_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Common/UIPrefabs");
-        AddBuildMap("Common_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Common/UIAssets");
+        DirectoryInfo resourceDir = new DirectoryInfo(AppDataPath + "/" + AppConst.ResourceDir);
+        DirectoryInfo[] moduleDirs = resourceDir.GetDirectories();
+        foreach (var module in moduleDirs)
+        {
+            string prefabPath = "Assets/" + AppConst.ResourceDir + "/" + module.Name + "/UIPrefabs";
+            string uiPath = "Assets/" + AppConst.ResourceDir + "/" + module.Name + "/UIAssets";
 
-        AddBuildMap("Loading_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Loading/UIPrefabs");
-        AddBuildMap("Loading_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Loading/UIAssets");
-
-        //AddBuildMap("Login_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Login/UIPrefabs");
-        //AddBuildMap("Login_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Login/UIAssets");
-
-        //AddBuildMap("Main_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Main/UIPrefabs");
-        //AddBuildMap("Main_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Main/UIAssets");
-
-        //AddBuildMap("Map_prefab" + AppConst.ExtName, "*.prefab", "Assets/PixelFarmResources/Map/UIPrefabs");
-        //AddBuildMap("Map_asset" + AppConst.ExtName, "*.png", "Assets/PixelFarmResources/Map/UIAssets");
+            if (Directory.Exists(prefabPath))
+            {
+                AddBuildMap(module.Name + "_prefab" + AppConst.ExtName, "*.prefab", prefabPath);
+            }
+            if (Directory.Exists(uiPath))
+            {
+                AddBuildMap(module.Name + "_asset" + AppConst.ExtName, "*.png", uiPath);
+            }
+        }
     }
 
     /// <summary>

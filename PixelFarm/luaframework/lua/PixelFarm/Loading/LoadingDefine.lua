@@ -6,10 +6,10 @@ LoadingCtrlNames = {
     Loading = "LoadingCtrl"
 }
 
-LoadingPanelNames = {
+LoadingViewNames = {
     Loading = "LoadingView"
 }
 
 
 CtrlNames[MoudleNames.Loading] = CtrlNames[MoudleNames.Loading] or LoadingCtrlNames
-PanelNames[MoudleNames.Loading] = PanelNames[MoudleNames.Loading] or LoadingPanelNames
+ViewNames[MoudleNames.Loading] = ViewNames[MoudleNames.Loading] or LoadingViewNames

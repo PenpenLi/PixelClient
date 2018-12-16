@@ -1,11 +1,12 @@
 
-ViewManager = class()
+local _ViewManager = class()
+ViewManager = _ViewManager.Instance()
 
-function ViewManager:Init()
+function _ViewManager:Init()
 end
 
 -- 加载界面
-function ViewManager:Start(ctrl, moduleName, viewName, parent, args)
+function _ViewManager:Start(ctrl, moduleName, viewName, parent, args)
     local viewClass = require(AppName .. "/" .. moduleName .. "/" .. "UI" .. "/" .. viewName)
     if viewClass then
         local view = viewClass.new(moduleName, viewName, parent, unpack(args))

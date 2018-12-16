@@ -15,17 +15,18 @@ ProtocalType = {
 	SPROTO = 3,
 }
 --当前使用的协议类型--
-TestProtoType = ProtocalType.BINARY;
+TestProtoType = ProtocalType.BINARY
 
-Util = LuaFramework.Util;
-AppConst = LuaFramework.AppConst;
-LuaHelper = LuaFramework.LuaHelper;
-ByteBuffer = LuaFramework.ByteBuffer;
+Util = LuaFramework.Util
+AppConst = LuaFramework.AppConst
+LuaHelper = LuaFramework.LuaHelper
+ByteBuffer = LuaFramework.ByteBuffer
 
-resMgr = LuaHelper.GetResManager();
-panelMgr = LuaHelper.GetPanelManager();
-soundMgr = LuaHelper.GetSoundManager();
-networkMgr = LuaHelper.GetNetManager();
+resMgr = LuaHelper.GetResManager()
+panelMgr = LuaHelper.GetPanelManager()
+soundMgr = LuaHelper.GetSoundManager()
+networkMgr = LuaHelper.GetNetManager()
 
-WWW = UnityEngine.WWW;
-GameObject = UnityEngine.GameObject;
+WWW = UnityEngine.WWW
+GameObject = UnityEngine.GameObject
+PlayerPrefs = UnityEngine.PlayerPrefs

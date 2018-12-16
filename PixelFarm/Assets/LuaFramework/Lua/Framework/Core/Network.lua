@@ -11,15 +11,15 @@ local sproto = require "3rd/sproto/sproto"
 local core = require "sproto.core"
 local print_r = require "3rd/sproto/print_r"
 
-NetManager = class();
-local this = NetManager;
+Network = {};
+local this = Network;
 
 local transform;
 local gameObject;
 local islogging = false;
 
-function NetManager.Start() 
-    print("NetManager.Start!!");
+function Network.Start() 
+    print("Network.Start!!");
     Event.AddListener(Protocal.Connect, this.OnConnect); 
     Event.AddListener(Protocal.Message, this.OnMessage); 
     Event.AddListener(Protocal.Exception, this.OnException); 
@@ -27,30 +27,30 @@ function NetManager.Start()
 end
 
 --Socket消息--
-function NetManager.OnSocket(key, data)
+function Network.OnSocket(key, data)
     Event.Brocast(tostring(key), data);
 end
 
 --当连接建立时--
-function NetManager.OnConnect() 
-    logWarn("Game Server connected!!");
+function Network.OnConnect() 
+    print("Game Server connected!!");
 end
 
 --异常断线--
-function NetManager.OnException() 
+function Network.OnException() 
     islogging = false; 
-    NetManager:SendConnect();
+    Network:SendConnect();
    	logError("OnException------->>>>");
 end
 
 --连接中断，或者被踢掉--
-function NetManager.OnDisconnect() 
+function Network.OnDisconnect() 
     islogging = false; 
     logError("OnDisconnect------->>>>");
 end
 
 --登录返回--
-function NetManager.OnMessage(buffer) 
+function Network.OnMessage(buffer) 
 	if TestProtoType == ProtocalType.BINARY then
 		this.TestLoginBinary(buffer);
 	end
@@ -72,14 +72,14 @@ function NetManager.OnMessage(buffer)
 end
 
 --二进制登录--
-function NetManager.TestLoginBinary(buffer)
+function Network.TestLoginBinary(buffer)
 	local protocal = buffer:ReadByte();
 	local str = buffer:ReadString();
 	log('TestLoginBinary: protocal:>'..protocal..' str:>'..str);
 end
 
 --PBLUA登录--
-function NetManager.TestLoginPblua(buffer)
+function Network.TestLoginPblua(buffer)
 	local protocal = buffer:ReadByte();
 	local data = buffer:ReadBuffer();
 
@@ -89,7 +89,7 @@ function NetManager.TestLoginPblua(buffer)
 end
 
 --PBC登录--
-function NetManager.TestLoginPbc(buffer)
+function Network.TestLoginPbc(buffer)
 	local protocal = buffer:ReadByte();
 	local data = buffer:ReadBuffer();
 
@@ -110,7 +110,7 @@ function NetManager.TestLoginPbc(buffer)
 end
 
 --SPROTO登录--
-function NetManager.TestLoginSproto(buffer)
+function Network.TestLoginSproto(buffer)
 	local protocal = buffer:ReadByte();
 	local code = buffer:ReadBuffer();
 
@@ -139,10 +139,10 @@ function NetManager.TestLoginSproto(buffer)
 end
 
 --卸载网络监听--
-function NetManager.Unload()
+function Network.Unload()
     Event.RemoveListener(Protocal.Connect);
     Event.RemoveListener(Protocal.Message);
     Event.RemoveListener(Protocal.Exception);
     Event.RemoveListener(Protocal.Disconnect);
-    logWarn('Unload NetManager...');
+    logWarn('Unload Network...');
 end

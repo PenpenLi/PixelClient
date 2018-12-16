@@ -29,9 +29,8 @@ end
 -- 销毁控制器回调 -- 非特殊情况，不可重载
 function CtrlBase:Destroy()
     -- print("[CtrlBase.Destroy]")
-    self:StopAllTimer()
     self.isDeling = true
-    if self.view and self.AutoDestroy then
+    if self.view then
         -- print("[Destroy]"..le(self.view.isDeling).."|"..le(self.view.viewName))
         self.view:Destroy()
         self.view.isDeling = true

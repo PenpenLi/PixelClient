@@ -22,6 +22,7 @@ require "Framework/Manager/NetManager"
 
 require "PixelFarm/PixelFarmDefine"
 require "PixelFarm/Manager/PanelManager"
+require "PixelFarm/Manager/LocalDataManager"
 
 --管理器--
 Game = class();
@@ -36,8 +37,8 @@ function Game:Start()
     print("game start")
 
     NetManager.Instance().Start()
-    CtrlManager.Instance():Init()
-    ViewManager.Instance():Init()
+    CtrlManager:Init()
+    ViewManager:Init()
     PanelManager.Instance():Init( function ()
         this.OnInitOK()
     end)
@@ -72,7 +73,7 @@ function Game.OnInitOK()
     --     ctrl:Awake();
     -- end
 
-    CtrlManager.Instance():OpenCtrl(MoudleNames.Loading, LoadingCtrlNames.Loading)
+    CtrlManager:OpenCtrl(MoudleNames.Loading, LoadingCtrlNames.Loading)
        
     print('LuaFramework InitOK--->>>');
 end

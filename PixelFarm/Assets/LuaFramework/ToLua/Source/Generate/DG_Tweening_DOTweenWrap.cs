@@ -246,23 +246,13 @@ public class DG_Tweening_DOTweenWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<float>, DG.Tweening.Core.DOSetter<float>, float, float>(L, 1))
+			if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<UnityEngine.Quaternion>, DG.Tweening.Core.DOSetter<UnityEngine.Quaternion>, UnityEngine.Vector3, float>(L, 1))
 			{
-				DG.Tweening.Core.DOGetter<float> arg0 = (DG.Tweening.Core.DOGetter<float>)ToLua.ToObject(L, 1);
-				DG.Tweening.Core.DOSetter<float> arg1 = (DG.Tweening.Core.DOSetter<float>)ToLua.ToObject(L, 2);
-				float arg2 = (float)LuaDLL.lua_tonumber(L, 3);
-				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
-				DG.Tweening.Core.TweenerCore<float,float,DG.Tweening.Plugins.Options.FloatOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
-				ToLua.PushObject(L, o);
-				return 1;
-			}
-			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<UnityEngine.Vector3>, DG.Tweening.Core.DOSetter<UnityEngine.Vector3>, UnityEngine.Vector3, float>(L, 1))
-			{
-				DG.Tweening.Core.DOGetter<UnityEngine.Vector3> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Vector3>)ToLua.ToObject(L, 1);
-				DG.Tweening.Core.DOSetter<UnityEngine.Vector3> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Vector3>)ToLua.ToObject(L, 2);
+				DG.Tweening.Core.DOGetter<UnityEngine.Quaternion> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Quaternion>)ToLua.ToObject(L, 1);
+				DG.Tweening.Core.DOSetter<UnityEngine.Quaternion> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Quaternion>)ToLua.ToObject(L, 2);
 				UnityEngine.Vector3 arg2 = ToLua.ToVector3(L, 3);
 				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
-				DG.Tweening.Core.TweenerCore<UnityEngine.Vector3,UnityEngine.Vector3,DG.Tweening.Plugins.Options.VectorOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
+				DG.Tweening.Core.TweenerCore<UnityEngine.Quaternion,UnityEngine.Vector3,DG.Tweening.Plugins.Options.QuaternionOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
@@ -276,13 +266,13 @@ public class DG_Tweening_DOTweenWrap
 				ToLua.PushObject(L, o);
 				return 1;
 			}
-			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<UnityEngine.Quaternion>, DG.Tweening.Core.DOSetter<UnityEngine.Quaternion>, UnityEngine.Vector3, float>(L, 1))
+			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<UnityEngine.Vector3>, DG.Tweening.Core.DOSetter<UnityEngine.Vector3>, UnityEngine.Vector3, float>(L, 1))
 			{
-				DG.Tweening.Core.DOGetter<UnityEngine.Quaternion> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Quaternion>)ToLua.ToObject(L, 1);
-				DG.Tweening.Core.DOSetter<UnityEngine.Quaternion> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Quaternion>)ToLua.ToObject(L, 2);
+				DG.Tweening.Core.DOGetter<UnityEngine.Vector3> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Vector3>)ToLua.ToObject(L, 1);
+				DG.Tweening.Core.DOSetter<UnityEngine.Vector3> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Vector3>)ToLua.ToObject(L, 2);
 				UnityEngine.Vector3 arg2 = ToLua.ToVector3(L, 3);
 				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
-				DG.Tweening.Core.TweenerCore<UnityEngine.Quaternion,UnityEngine.Vector3,DG.Tweening.Plugins.Options.QuaternionOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
+				DG.Tweening.Core.TweenerCore<UnityEngine.Vector3,UnityEngine.Vector3,DG.Tweening.Plugins.Options.VectorOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
@@ -296,13 +286,13 @@ public class DG_Tweening_DOTweenWrap
 				ToLua.PushObject(L, o);
 				return 1;
 			}
-			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<UnityEngine.Rect>, DG.Tweening.Core.DOSetter<UnityEngine.Rect>, UnityEngine.Rect, float>(L, 1))
+			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOSetter<float>, float, float, float>(L, 1))
 			{
-				DG.Tweening.Core.DOGetter<UnityEngine.Rect> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Rect>)ToLua.ToObject(L, 1);
-				DG.Tweening.Core.DOSetter<UnityEngine.Rect> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Rect>)ToLua.ToObject(L, 2);
-				UnityEngine.Rect arg2 = StackTraits<UnityEngine.Rect>.To(L, 3);
+				DG.Tweening.Core.DOSetter<float> arg0 = (DG.Tweening.Core.DOSetter<float>)ToLua.ToObject(L, 1);
+				float arg1 = (float)LuaDLL.lua_tonumber(L, 2);
+				float arg2 = (float)LuaDLL.lua_tonumber(L, 3);
 				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
-				DG.Tweening.Core.TweenerCore<UnityEngine.Rect,UnityEngine.Rect,DG.Tweening.Plugins.Options.RectOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
+				DG.Tweening.Tweener o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
@@ -316,6 +306,16 @@ public class DG_Tweening_DOTweenWrap
 				ToLua.PushObject(L, o);
 				return 1;
 			}
+			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<UnityEngine.Rect>, DG.Tweening.Core.DOSetter<UnityEngine.Rect>, UnityEngine.Rect, float>(L, 1))
+			{
+				DG.Tweening.Core.DOGetter<UnityEngine.Rect> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Rect>)ToLua.ToObject(L, 1);
+				DG.Tweening.Core.DOSetter<UnityEngine.Rect> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Rect>)ToLua.ToObject(L, 2);
+				UnityEngine.Rect arg2 = StackTraits<UnityEngine.Rect>.To(L, 3);
+				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
+				DG.Tweening.Core.TweenerCore<UnityEngine.Rect,UnityEngine.Rect,DG.Tweening.Plugins.Options.RectOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
 			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<UnityEngine.Vector2>, DG.Tweening.Core.DOSetter<UnityEngine.Vector2>, UnityEngine.Vector2, float>(L, 1))
 			{
 				DG.Tweening.Core.DOGetter<UnityEngine.Vector2> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Vector2>)ToLua.ToObject(L, 1);
@@ -323,16 +323,6 @@ public class DG_Tweening_DOTweenWrap
 				UnityEngine.Vector2 arg2 = ToLua.ToVector2(L, 3);
 				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
 				DG.Tweening.Core.TweenerCore<UnityEngine.Vector2,UnityEngine.Vector2,DG.Tweening.Plugins.Options.VectorOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
-				ToLua.PushObject(L, o);
-				return 1;
-			}
-			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<double>, DG.Tweening.Core.DOSetter<double>, double, float>(L, 1))
-			{
-				DG.Tweening.Core.DOGetter<double> arg0 = (DG.Tweening.Core.DOGetter<double>)ToLua.ToObject(L, 1);
-				DG.Tweening.Core.DOSetter<double> arg1 = (DG.Tweening.Core.DOSetter<double>)ToLua.ToObject(L, 2);
-				double arg2 = (double)LuaDLL.lua_tonumber(L, 3);
-				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
-				DG.Tweening.Core.TweenerCore<double,double,DG.Tweening.Plugins.Options.NoOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
@@ -346,31 +336,31 @@ public class DG_Tweening_DOTweenWrap
 				ToLua.PushObject(L, o);
 				return 1;
 			}
+			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<double>, DG.Tweening.Core.DOSetter<double>, double, float>(L, 1))
+			{
+				DG.Tweening.Core.DOGetter<double> arg0 = (DG.Tweening.Core.DOGetter<double>)ToLua.ToObject(L, 1);
+				DG.Tweening.Core.DOSetter<double> arg1 = (DG.Tweening.Core.DOSetter<double>)ToLua.ToObject(L, 2);
+				double arg2 = (double)LuaDLL.lua_tonumber(L, 3);
+				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
+				DG.Tweening.Core.TweenerCore<double,double,DG.Tweening.Plugins.Options.NoOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
+			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<float>, DG.Tweening.Core.DOSetter<float>, float, float>(L, 1))
+			{
+				DG.Tweening.Core.DOGetter<float> arg0 = (DG.Tweening.Core.DOGetter<float>)ToLua.ToObject(L, 1);
+				DG.Tweening.Core.DOSetter<float> arg1 = (DG.Tweening.Core.DOSetter<float>)ToLua.ToObject(L, 2);
+				float arg2 = (float)LuaDLL.lua_tonumber(L, 3);
+				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
+				DG.Tweening.Core.TweenerCore<float,float,DG.Tweening.Plugins.Options.FloatOptions> o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
 			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<uint>, DG.Tweening.Core.DOSetter<uint>, uint, float>(L, 1))
 			{
 				DG.Tweening.Core.DOGetter<uint> arg0 = (DG.Tweening.Core.DOGetter<uint>)ToLua.ToObject(L, 1);
 				DG.Tweening.Core.DOSetter<uint> arg1 = (DG.Tweening.Core.DOSetter<uint>)ToLua.ToObject(L, 2);
 				uint arg2 = (uint)LuaDLL.lua_tonumber(L, 3);
-				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
-				DG.Tweening.Tweener o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
-				ToLua.PushObject(L, o);
-				return 1;
-			}
-			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOSetter<float>, float, float, float>(L, 1))
-			{
-				DG.Tweening.Core.DOSetter<float> arg0 = (DG.Tweening.Core.DOSetter<float>)ToLua.ToObject(L, 1);
-				float arg1 = (float)LuaDLL.lua_tonumber(L, 2);
-				float arg2 = (float)LuaDLL.lua_tonumber(L, 3);
-				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
-				DG.Tweening.Tweener o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
-				ToLua.PushObject(L, o);
-				return 1;
-			}
-			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<ulong>, DG.Tweening.Core.DOSetter<ulong>, ulong, float>(L, 1))
-			{
-				DG.Tweening.Core.DOGetter<ulong> arg0 = (DG.Tweening.Core.DOGetter<ulong>)ToLua.ToObject(L, 1);
-				DG.Tweening.Core.DOSetter<ulong> arg1 = (DG.Tweening.Core.DOSetter<ulong>)ToLua.ToObject(L, 2);
-				ulong arg2 = LuaDLL.tolua_touint64(L, 3);
 				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
 				DG.Tweening.Tweener o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
 				ToLua.PushObject(L, o);
@@ -391,6 +381,16 @@ public class DG_Tweening_DOTweenWrap
 				DG.Tweening.Core.DOGetter<long> arg0 = (DG.Tweening.Core.DOGetter<long>)ToLua.ToObject(L, 1);
 				DG.Tweening.Core.DOSetter<long> arg1 = (DG.Tweening.Core.DOSetter<long>)ToLua.ToObject(L, 2);
 				long arg2 = LuaDLL.tolua_toint64(L, 3);
+				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
+				DG.Tweening.Tweener o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
+			else if (count == 4 && TypeChecker.CheckTypes<DG.Tweening.Core.DOGetter<ulong>, DG.Tweening.Core.DOSetter<ulong>, ulong, float>(L, 1))
+			{
+				DG.Tweening.Core.DOGetter<ulong> arg0 = (DG.Tweening.Core.DOGetter<ulong>)ToLua.ToObject(L, 1);
+				DG.Tweening.Core.DOSetter<ulong> arg1 = (DG.Tweening.Core.DOSetter<ulong>)ToLua.ToObject(L, 2);
+				ulong arg2 = LuaDLL.tolua_touint64(L, 3);
 				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
 				DG.Tweening.Tweener o = DG.Tweening.DOTween.To(arg0, arg1, arg2, arg3);
 				ToLua.PushObject(L, o);
@@ -553,17 +553,6 @@ public class DG_Tweening_DOTweenWrap
 				ToLua.PushObject(L, o);
 				return 1;
 			}
-			else if (count == 5 && TypeChecker.CheckTypes<float, int>(L, 4))
-			{
-				DG.Tweening.Core.DOGetter<UnityEngine.Vector3> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Vector3>)ToLua.CheckDelegate<DG.Tweening.Core.DOGetter<UnityEngine.Vector3>>(L, 1);
-				DG.Tweening.Core.DOSetter<UnityEngine.Vector3> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Vector3>)ToLua.CheckDelegate<DG.Tweening.Core.DOSetter<UnityEngine.Vector3>>(L, 2);
-				float arg2 = (float)LuaDLL.luaL_checknumber(L, 3);
-				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
-				int arg4 = (int)LuaDLL.lua_tonumber(L, 5);
-				DG.Tweening.Core.TweenerCore<UnityEngine.Vector3,UnityEngine.Vector3[],DG.Tweening.Plugins.Options.Vector3ArrayOptions> o = DG.Tweening.DOTween.Shake(arg0, arg1, arg2, arg3, arg4);
-				ToLua.PushObject(L, o);
-				return 1;
-			}
 			else if (count == 5 && TypeChecker.CheckTypes<UnityEngine.Vector3, int>(L, 4))
 			{
 				DG.Tweening.Core.DOGetter<UnityEngine.Vector3> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Vector3>)ToLua.CheckDelegate<DG.Tweening.Core.DOGetter<UnityEngine.Vector3>>(L, 1);
@@ -575,15 +564,14 @@ public class DG_Tweening_DOTweenWrap
 				ToLua.PushObject(L, o);
 				return 1;
 			}
-			else if (count == 6 && TypeChecker.CheckTypes<float, int, float>(L, 4))
+			else if (count == 5 && TypeChecker.CheckTypes<float, int>(L, 4))
 			{
 				DG.Tweening.Core.DOGetter<UnityEngine.Vector3> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Vector3>)ToLua.CheckDelegate<DG.Tweening.Core.DOGetter<UnityEngine.Vector3>>(L, 1);
 				DG.Tweening.Core.DOSetter<UnityEngine.Vector3> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Vector3>)ToLua.CheckDelegate<DG.Tweening.Core.DOSetter<UnityEngine.Vector3>>(L, 2);
 				float arg2 = (float)LuaDLL.luaL_checknumber(L, 3);
 				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
 				int arg4 = (int)LuaDLL.lua_tonumber(L, 5);
-				float arg5 = (float)LuaDLL.lua_tonumber(L, 6);
-				DG.Tweening.Core.TweenerCore<UnityEngine.Vector3,UnityEngine.Vector3[],DG.Tweening.Plugins.Options.Vector3ArrayOptions> o = DG.Tweening.DOTween.Shake(arg0, arg1, arg2, arg3, arg4, arg5);
+				DG.Tweening.Core.TweenerCore<UnityEngine.Vector3,UnityEngine.Vector3[],DG.Tweening.Plugins.Options.Vector3ArrayOptions> o = DG.Tweening.DOTween.Shake(arg0, arg1, arg2, arg3, arg4);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
@@ -593,6 +581,18 @@ public class DG_Tweening_DOTweenWrap
 				DG.Tweening.Core.DOSetter<UnityEngine.Vector3> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Vector3>)ToLua.CheckDelegate<DG.Tweening.Core.DOSetter<UnityEngine.Vector3>>(L, 2);
 				float arg2 = (float)LuaDLL.luaL_checknumber(L, 3);
 				UnityEngine.Vector3 arg3 = ToLua.ToVector3(L, 4);
+				int arg4 = (int)LuaDLL.lua_tonumber(L, 5);
+				float arg5 = (float)LuaDLL.lua_tonumber(L, 6);
+				DG.Tweening.Core.TweenerCore<UnityEngine.Vector3,UnityEngine.Vector3[],DG.Tweening.Plugins.Options.Vector3ArrayOptions> o = DG.Tweening.DOTween.Shake(arg0, arg1, arg2, arg3, arg4, arg5);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
+			else if (count == 6 && TypeChecker.CheckTypes<float, int, float>(L, 4))
+			{
+				DG.Tweening.Core.DOGetter<UnityEngine.Vector3> arg0 = (DG.Tweening.Core.DOGetter<UnityEngine.Vector3>)ToLua.CheckDelegate<DG.Tweening.Core.DOGetter<UnityEngine.Vector3>>(L, 1);
+				DG.Tweening.Core.DOSetter<UnityEngine.Vector3> arg1 = (DG.Tweening.Core.DOSetter<UnityEngine.Vector3>)ToLua.CheckDelegate<DG.Tweening.Core.DOSetter<UnityEngine.Vector3>>(L, 2);
+				float arg2 = (float)LuaDLL.luaL_checknumber(L, 3);
+				float arg3 = (float)LuaDLL.lua_tonumber(L, 4);
 				int arg4 = (int)LuaDLL.lua_tonumber(L, 5);
 				float arg5 = (float)LuaDLL.lua_tonumber(L, 6);
 				DG.Tweening.Core.TweenerCore<UnityEngine.Vector3,UnityEngine.Vector3[],DG.Tweening.Plugins.Options.Vector3ArrayOptions> o = DG.Tweening.DOTween.Shake(arg0, arg1, arg2, arg3, arg4, arg5);
