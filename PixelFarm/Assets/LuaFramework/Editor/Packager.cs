@@ -317,11 +317,11 @@ public class Packager {
     [MenuItem("LuaFramework/Build Protobuf-lua-gen File")]
     public static void BuildProtobufFile() {
         
-        string dir = AppDataPath + "/Lua/3rd/pblua";
+        string dir = AppDataPath + "/ProtoBuffer/Lua";
         paths.Clear(); files.Clear(); Recursive(dir);
 
-        string protoc = "d:/protobuf-2.4.1/src/protoc.exe";
-        string protoc_gen_dir = "\"d:/protoc-gen-lua/plugin/protoc-gen-lua.bat\"";
+        string protoc = "F:/software/protoc-3.6.0-win32/bin/protoc.exe";
+        string protoc_gen_dir = "\"F:/framework/protoc-gen-lua-master/protoc-gen-lua-master/plugin/protoc-gen-lua.bat\"";
 
         foreach (string f in files) {
             string name = Path.GetFileName(f);
@@ -330,7 +330,7 @@ public class Packager {
 
             ProcessStartInfo info = new ProcessStartInfo();
             info.FileName = protoc;
-            info.Arguments = " --lua_out=./ --plugin=protoc-gen-lua=" + protoc_gen_dir + " " + name;
+            info.Arguments = " --lua_out=E:/gitHub/PixelFarm/PixelClient/PixelFarm/Assets/ProtoBuffer/Lua --plugin=protoc-gen-lua=" + protoc_gen_dir + " " + name;
             info.WindowStyle = ProcessWindowStyle.Hidden;
             info.UseShellExecute = true;
             info.WorkingDirectory = dir;
