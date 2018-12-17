@@ -12,7 +12,8 @@ MoudleNames = {
     Common = "Common",
     Loading = "Loading",
     Main = "Main",
-    Login = "Login"
+    Login = "Login",
+    Map = "Map",
 }
 
 -- UI层级
@@ -25,6 +26,7 @@ UIPanelNames = {
 
 UIPanelOrder = {UIPanelNames.Low, UIPanelNames.Mid, UIPanelNames.High, UIPanelNames.Top}
 
-require "PixelFarm/Loading/LoadingDefine"
-require "PixelFarm/Main/MainDefine"
-require "PixelFarm/Login/LoginDefine"
+require "PixelFarm/Modules/Loading/LoadingDefine"
+require "PixelFarm/Modules/Main/MainDefine"
+require "PixelFarm/Modules/Login/LoginDefine"
+require "PixelFarm/Modules/Map/MapDefine"

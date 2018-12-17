@@ -20,7 +20,7 @@ function _CtrlManager:OpenCtrl(moduleName, ctrlName, ...)
         return viewCtrl
     end
 
-    local ctrlClass = require(AppName .. '/' .. moduleName .. '/' .. "UI" .. "/" .. ctrlName)
+    local ctrlClass = require(AppName .. '/Modules/' .. moduleName .. '/' .. "UI" .. "/" .. ctrlName)
     local ctrlBean = {}
     if ctrlClass then
         viewCtrl = ctrlClass.new(ctrlName, ...)

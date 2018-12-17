@@ -6,4 +6,12 @@ Protocal = {
 	Message		= '104';	--接收消息
 }
 
+local _msgInfo = {}
 
+function Protocal.Registe(key, requestName)
+	_msgInfo[requestName] = key
+end
+
+function Protocal.KeyOf(requestName)
+	return _msgInfo[requestName]
+end

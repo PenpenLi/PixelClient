@@ -9,6 +9,9 @@ local Event = {}
 local events = {}
 
 function Event.AddListener(event,handler)
+	if type(event) == "number" then
+		event = tostring(event)
+	end
 	if not event or type(event) ~= "string" then
 		error("event parameter in addlistener function has to be string, " .. type(event) .. " not right.")
 	end

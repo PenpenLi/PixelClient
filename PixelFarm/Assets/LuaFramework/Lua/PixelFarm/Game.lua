@@ -22,6 +22,7 @@ require "Framework/Manager/ViewManager"
 require "PixelFarm/PixelFarmDefine"
 require "PixelFarm/Manager/PanelManager"
 require "PixelFarm/Manager/LocalDataManager"
+require "PixelFarm/Manager/NetManager"
 
 --管理器--
 Game = class();
@@ -34,7 +35,7 @@ local WWW = UnityEngine.WWW;
 
 function Game:Start()
     print("game start")
-
+    NetManager:Init()
     CtrlManager:Init()
     ViewManager:Init()
     PanelManager.Instance():Init( function ()

@@ -357,11 +357,27 @@ public class LuaFramework_ByteBufferWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 1);
-			LuaFramework.ByteBuffer obj = (LuaFramework.ByteBuffer)ToLua.CheckObject<LuaFramework.ByteBuffer>(L, 1);
-			byte[] o = obj.ReadBytes();
-			ToLua.Push(L, o);
-			return 1;
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				LuaFramework.ByteBuffer obj = (LuaFramework.ByteBuffer)ToLua.CheckObject<LuaFramework.ByteBuffer>(L, 1);
+				byte[] o = obj.ReadBytes();
+				ToLua.Push(L, o);
+				return 1;
+			}
+			else if (count == 2)
+			{
+				LuaFramework.ByteBuffer obj = (LuaFramework.ByteBuffer)ToLua.CheckObject<LuaFramework.ByteBuffer>(L, 1);
+				int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
+				byte[] o = obj.ReadBytes(arg0);
+				ToLua.Push(L, o);
+				return 1;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: LuaFramework.ByteBuffer.ReadBytes");
+			}
 		}
 		catch (Exception e)
 		{

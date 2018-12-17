@@ -18,11 +18,11 @@ require "Framework/Core/CtrlBase"
 require "Framework/Core/ViewBase"
 require "Framework/Manager/CtrlManager"
 require "Framework/Manager/ViewManager"
-require "Framework/Manager/NetManager"
 
 require "PixelFarm/PixelFarmDefine"
 require "PixelFarm/Manager/PanelManager"
 require "PixelFarm/Manager/LocalDataManager"
+require "PixelFarm/Manager/NetManager"
 
 --管理器--
 Game = class();
@@ -35,8 +35,7 @@ local WWW = UnityEngine.WWW;
 
 function Game:Start()
     print("game start")
-
-    NetManager.Instance().Start()
+    NetManager:Init()
     CtrlManager:Init()
     ViewManager:Init()
     PanelManager.Instance():Init( function ()
@@ -52,8 +51,8 @@ end
 
 --初始化完成，发送链接服务器信息--
 function Game.OnInitOK()
-    AppConst.SocketPort = 2012;
-    AppConst.SocketAddress = "127.0.0.1";
+    AppConst.SocketPort = App.serverPort;
+    AppConst.SocketAddress = App.serverIp;
     networkMgr:SendConnect();
 
     -- --注册LuaView--

@@ -14,4 +14,12 @@ function _LocalDataManager:GetUid()
     end
 end
 
+function _LocalDataManager:SaveUid(uid)
+    if uid and #uid > 0 then
+        PlayerPrefs.SetString(LocalDataKey.PLAYER_UID, uid)
+    else
+        print("[LocalDataManager] SaveUid error!  uid = " .. uid)
+    end
+end
+
 return _LocalDataManager

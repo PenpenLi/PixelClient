@@ -7,7 +7,7 @@ end
 
 -- 加载界面
 function _ViewManager:Start(ctrl, moduleName, viewName, parent, args)
-    local viewClass = require(AppName .. "/" .. moduleName .. "/" .. "UI" .. "/" .. viewName)
+    local viewClass = require(AppName .. "/Modules/" .. moduleName .. "/" .. "UI" .. "/" .. viewName)
     if viewClass then
         local view = viewClass.new(moduleName, viewName, parent, unpack(args))
         view.iCtrl = ctrl
