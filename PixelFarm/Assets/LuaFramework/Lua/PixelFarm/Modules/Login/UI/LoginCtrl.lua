@@ -14,4 +14,15 @@ function _LoginCtrl:Login(accout, password)
     end)
 end
 
+function _LoginCtrl:Registe(accout, password)
+    LoginLogic:Registe(accout,password,function (succeed, msg)
+        if succeed then
+            CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
+            CtrlManager:CloseCtrl(LoginCtrlNames.Login)
+        else
+
+        end
+    end)
+end
+
 return _LoginCtrl

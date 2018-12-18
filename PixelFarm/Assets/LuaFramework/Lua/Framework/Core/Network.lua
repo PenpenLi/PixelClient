@@ -28,6 +28,7 @@ end
 
 --Socket消息--
 function Network.OnSocket(key, data)
+    print("[Network.OnSocket] kye = " .. key);
     Event.Brocast(tostring(key), data);
 end
 

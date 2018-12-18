@@ -7,11 +7,12 @@ LocalDataKey = {
 
 -- 获取本地用户ID
 function _LocalDataManager:GetUid()
-    if PlayerPrefs.HasKey(LocalDataKey.PLAYER_UID) then
-        return PlayerPrefs.GetString(LocalDataKey.PLAYER_UID)
-    else
-        return ""
-    end
+    return ""
+    -- if PlayerPrefs.HasKey(LocalDataKey.PLAYER_UID) then
+    --     return PlayerPrefs.GetString(LocalDataKey.PLAYER_UID)
+    -- else
+    --     return ""
+    -- end
 end
 
 function _LocalDataManager:SaveUid(uid)

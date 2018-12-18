@@ -9,8 +9,12 @@ end
 
 function _LoadingCtrl:ShowMainView()
     if #LocalDataManager:GetUid() > 0 then
-        LoginLogic:Login(LocalDataManager:GetUid(),"123",function ()
-            CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
+        LoginLogic:Login(LocalDataManager:GetUid(),"",function (succeed, err)
+            if succeed then
+                CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
+            else
+                CtrlManager:OpenCtrl(MoudleNames.Login, LoginCtrlNames.Login)
+            end
         end)
     else
         CtrlManager:OpenCtrl(MoudleNames.Login, LoginCtrlNames.Login)
