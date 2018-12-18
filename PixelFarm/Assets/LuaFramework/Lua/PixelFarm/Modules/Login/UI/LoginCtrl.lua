@@ -1,4 +1,4 @@
-local LoginLogic = require "PixelFarm.Login.Logic.LoginLogic"
+local LoginLogic = require "PixelFarm.Modules.Login.Logic.LoginLogic"
 
 local _LoginCtrl = class(CtrlBase)
 

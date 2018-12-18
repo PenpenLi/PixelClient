@@ -1,4 +1,4 @@
-require "3rd.pblua.login_pb"
+require "PixelFarm/PBLua/login_pb"
 
 local _LoginLogic = class()
 

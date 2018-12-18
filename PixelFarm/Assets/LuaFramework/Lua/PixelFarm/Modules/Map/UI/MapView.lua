@@ -29,7 +29,7 @@ function _MapView:InitMap()
     for i=0,wCount do
         for j=0,hCount do
             local cellObj = newObject(self.mapCell)
-            cellObj.transform.parent = self.mapRoot.transform
+            cellObj.transform:SetParent(self.mapRoot.transform, false)
             cellObj.transform.localScale = Vector3(1,1,1)
             cellObj.transform.localPosition = Vector3(i*_cellSize.w - _mapSize.w * 0.5, j*_cellSize.h - _mapSize.h * 0.5, 0)
             if math.random(1,2) == 1 then
@@ -49,7 +49,7 @@ function _MapView:InitMap()
     for i=0,wCount do
         for j=0,hCount do
             local cellObj = newObject(self.mapCell)
-            cellObj.transform.parent = self.mapRoot.transform
+            cellObj.transform:SetParent(self.mapRoot.transform, false)
             cellObj.transform.localScale = Vector3(1,1,1)
             cellObj.transform.localPosition = Vector3(i*_cellSize.w - _mapSize.w * 0.5 + _cellSize.w*0.5, j*_cellSize.h - _mapSize.h * 0.5 + _cellSize.h * 0.5, 0)
             if math.random(1,2) == 1 then
