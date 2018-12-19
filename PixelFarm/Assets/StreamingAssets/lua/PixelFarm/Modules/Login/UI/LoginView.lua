@@ -38,7 +38,9 @@ end
 
 function _LoginView:OnRegisteBtnClick()
     print("OnRegisteBtnClick ~~~~~")
-
+    local accout = self.centerBlock.accountInput.text
+    local password = self.centerBlock.passwordInput.text
+    self.iCtrl:Registe(accout, password)
 end
 
 function _LoginView:OnDestroy()

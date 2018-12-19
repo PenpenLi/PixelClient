@@ -180,6 +180,8 @@ public static class CustomSettings
         _GT(typeof(Slider)),
         _GT(typeof(InputField)),
         _GT(typeof(PlayerPrefs)),
+        _GT(typeof(Button)),
+        _GT(typeof(Button.ButtonClickedEvent)),
 
         _GT(typeof(Vector2)),
         _GT(typeof(Vector3)),

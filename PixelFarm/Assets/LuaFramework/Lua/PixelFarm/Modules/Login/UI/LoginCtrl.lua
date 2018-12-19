@@ -15,12 +15,13 @@ function _LoginCtrl:Login(accout, password)
 end
 
 function _LoginCtrl:Registe(accout, password)
-    LoginLogic:Registe(accout,password,function (succeed, msg)
+    LoginLogic:Registe(accout,password,function (succeed, err)
         if succeed then
             CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
             CtrlManager:CloseCtrl(LoginCtrlNames.Login)
         else
-
+            print("regsite fail")
+            CtrlManager:GetCtrl(CommonCtrlNames.Toast):ShowToast(err.msg)
         end
     end)
 end

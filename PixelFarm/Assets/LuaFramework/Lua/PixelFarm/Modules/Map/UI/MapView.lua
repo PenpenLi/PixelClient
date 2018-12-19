@@ -41,7 +41,7 @@ function _MapView:InitMap()
             end
             cellObj:SetActive(true)
 
-            cellObj:SetOnClick(function ()
+            cellObj:GetComponent("Button").onClick:AddListener(function ()
                 self:OnClickCell(i,j)
             end)
         end
@@ -61,7 +61,7 @@ function _MapView:InitMap()
             end
             cellObj:SetActive(true)
 
-            cellObj:SetOnClick(function ()
+            cellObj:GetComponent("Button").onClick:AddListener(function ()
                 self:OnClickCell(i,j)
             end)
         end

@@ -21,5 +21,3 @@ function _LocalDataManager:SaveUid(uid)
         print("[LocalDataManager] SaveUid error!  uid = " .. uid)
     end
 end
-
-return _LocalDataManager

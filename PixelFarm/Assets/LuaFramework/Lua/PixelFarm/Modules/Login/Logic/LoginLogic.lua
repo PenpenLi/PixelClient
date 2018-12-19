@@ -22,7 +22,7 @@ function _LoginLogic:Login(accout, password, cb)
 
         print("[LoginLogic] Login response = ")
 
-        if msg.code == msg.LoginResponseCode.SUCCESS then
+        if msg.code == login_pb.SUCCESS then
             LocalDataManager:SaveUid(msg.uid)
 
             if cb then
@@ -43,36 +43,45 @@ end
 function _LoginLogic:Registe(accout, password, cb)
     print("[LoginLogic] Registe account = " .. accout .. " password = " .. password)
 
-    local registe = login_pb.RegisteRequest()
-    registe.account = accout
-    registe.password = password
-    local msg = registe:SerializeToString()
-
     Event.AddListener(Protocal.KeyOf("RegisteResponse"), function(buffer)
         local data = buffer:ReadBuffer()
 
-        local msg = login_pb.RegisteResponse()
-        msg:ParseFromString(data)
+        print("[LoginLogic] Registe response")
 
-        print("[LoginLogic] Registe response = " .. tostring(msg.code) .. " uid = " .. tostring(msg.uid))
+        local decode = protobuf.decode("msg.RegisteResponse", data)
+        -- local msg = login_pb.RegisteResponse()
+        -- msg:ParseFromString(data)
+
+        print("[LoginLogic] Registe response = " .. tabStr(decode) .. type(decode))
+        print(decode.code)
+        print(decode.err.code)
+        print(decode.err.msg)
         
-        print(msg.RegisteResponse.RegisteResponseCode.SUCCESS)
-        if msg.code == msg.RegisteResponseCode.SUCCESS then
-            LocalDataManager:SaveUid(msg.uid)
-            print("~~~~~~~~~~")
-            print(cb)
+        if decode.code == login_pb.SUCCESS then
+            LocalDataManager:SaveUid(decode.uid)
             if cb then
                 cb(true)
             end
         else
             if cb then
-                cb(false, msg.err)
+                cb(false, decode.err)
             end
         end
     end) 
+
+    -- local registe = login_pb.RegisteRequest()
+    -- registe.account = accout
+    -- registe.password = password
+    -- local msg = registe:SerializeToString()
+
+    local registe = {
+        account = accout,
+        password = password
+    }
+    local code = protobuf.encode("msg.RegisteRequest", registe)
     local buffer = ByteBuffer.New()
     buffer:WriteShort(Protocal.KeyOf("RegisteRequest"))
-    buffer:WriteBuffer(msg)
+    buffer:WriteBuffer(code)
     networkMgr:SendMessage(buffer)
 end
 

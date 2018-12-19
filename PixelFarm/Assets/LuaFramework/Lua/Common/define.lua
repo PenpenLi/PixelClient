@@ -30,3 +30,4 @@ networkMgr = LuaHelper.GetNetManager()
 WWW = UnityEngine.WWW
 GameObject = UnityEngine.GameObject
 PlayerPrefs = UnityEngine.PlayerPrefs
+Application = UnityEngine.Application

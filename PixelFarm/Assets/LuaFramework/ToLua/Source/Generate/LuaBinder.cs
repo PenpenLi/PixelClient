@@ -109,9 +109,13 @@ public static class LuaBinder
 		UnityEngine_UI_TextWrap.Register(L);
 		UnityEngine_UI_SliderWrap.Register(L);
 		UnityEngine_UI_InputFieldWrap.Register(L);
+		UnityEngine_UI_ButtonWrap.Register(L);
 		UnityEngine_UI_MaskableGraphicWrap.Register(L);
 		UnityEngine_UI_GraphicWrap.Register(L);
 		UnityEngine_UI_SelectableWrap.Register(L);
+		L.BeginModule("Button");
+		UnityEngine_UI_Button_ButtonClickedEventWrap.Register(L);
+		L.EndModule();
 		L.BeginModule("InputField");
 		L.RegFunction("OnValidateInput", UnityEngine_UI_InputField_OnValidateInput);
 		L.EndModule();
@@ -120,6 +124,8 @@ public static class LuaBinder
 		UnityEngine_EventSystems_UIBehaviourWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("Events");
+		UnityEngine_Events_UnityEventWrap.Register(L);
+		UnityEngine_Events_UnityEventBaseWrap.Register(L);
 		L.RegFunction("UnityAction", UnityEngine_Events_UnityAction);
 		L.EndModule();
 		L.BeginModule("Camera");

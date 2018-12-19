@@ -44,6 +44,12 @@ function _CtrlManager:CloseCtrl(ctrlName)
     collectgarbage('collect')
 end
 
+-- 获取控制器
+function _CtrlManager:GetCtrl(ctrlName)
+    local i, cName, viewCtrl = self:GetContainsCtrl(ctrlName)
+    return viewCtrl
+end
+
 -- 辅助删除
 function _CtrlManager:DestroyGameCtrl(ctrlBean)
     if ctrlBean then
