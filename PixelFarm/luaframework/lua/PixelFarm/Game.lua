@@ -1,5 +1,3 @@
-require "3rd/pblua/login_pb"
-require "3rd/pbc/protobuf"
 
 local lpeg = require "lpeg"
 
@@ -23,31 +21,23 @@ require "PixelFarm/PixelFarmDefine"
 require "PixelFarm/Manager/PanelManager"
 require "PixelFarm/Manager/LocalDataManager"
 require "PixelFarm/Manager/NetManager"
+require "PixelFarm/Manager/PBManager"
 
 --管理器--
 Game = class();
-local this = Game;
-
-local game; 
-local transform;
-local gameObject;
-local WWW = UnityEngine.WWW;
+local this = Game
 
 function Game:Start()
     print("game start")
     NetManager:Init()
     CtrlManager:Init()
     ViewManager:Init()
+    PBManager:Init()
     PanelManager.Instance():Init( function ()
         this.OnInitOK()
     end)
 end
 
-function Game.InitViewPanels()
-	for i = 1, #PanelNames do
-		require ("View/"..tostring(PanelNames[i]))
-	end
-end
 
 --初始化完成，发送链接服务器信息--
 function Game.OnInitOK()
@@ -55,25 +45,9 @@ function Game.OnInitOK()
     AppConst.SocketAddress = App.serverIp;
     networkMgr:SendConnect();
 
-    -- --注册LuaView--
-    -- this.InitViewPanels();
-
-    -- this.test_class_func();
-    -- this.test_pblua_func();
-    -- this.test_cjson_func();
-    -- this.test_pbc_func();
-    -- this.test_lpeg_func();
-    -- this.test_sproto_func();
-    -- coroutine.start(this.test_coroutine);
-
-    -- CtrlManager.Init();
-    -- local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
-    -- if ctrl ~= nil and AppConst.ExampleMode == 1 then
-    --     ctrl:Awake();
-    -- end
-
     CtrlManager:OpenCtrl(MoudleNames.Loading, LoadingCtrlNames.Loading)
-       
+    CtrlManager:OpenCtrl(MoudleNames.Common, CommonCtrlNames.Toast)
+
     print('LuaFramework InitOK--->>>');
 end
 

@@ -7,57 +7,18 @@ local _LoginLogic = class()
 function _LoginLogic:Login(accout, password, cb)
     print("[LoginLogic] Login account = " .. accout .. " password = " .. password)
 
-    local login = login_pb.LoginRequest()
-    login.account = accout
-    login.password = password
-    local msg = login:SerializeToString()
-
-    Event.AddListener(Protocal.KeyOf("LoginResponse"), function(buffer)
+    local loginResponseFunc = function(buffer)
         local data = buffer:ReadBuffer()
 
-        print("[LoginLogic] Login response = ")
+        print("[LoginLogic] Login response")
 
-        local msg = login_pb.LoginResponse()
-        msg:ParseFromString(data)
+        local decode = protobuf.decode("msg.LoginResponse", data)
 
-        print("[LoginLogic] Login response = ")
-
-        if msg.code == login_pb.SUCCESS then
-            LocalDataManager:SaveUid(msg.uid)
-
-            if cb then
-                cb(true)
-            end
-        else
-            if cb then
-                cb(false, msg.err)
-            end
-        end
-    end) 
-    local buffer = ByteBuffer.New()
-    buffer:WriteShort(Protocal.KeyOf("LoginRequest"))
-    buffer:WriteBuffer(msg)
-    networkMgr:SendMessage(buffer)
-end
-
-function _LoginLogic:Registe(accout, password, cb)
-    print("[LoginLogic] Registe account = " .. accout .. " password = " .. password)
-
-    Event.AddListener(Protocal.KeyOf("RegisteResponse"), function(buffer)
-        local data = buffer:ReadBuffer()
-
-        print("[LoginLogic] Registe response")
-
-        local decode = protobuf.decode("msg.RegisteResponse", data)
-        -- local msg = login_pb.RegisteResponse()
-        -- msg:ParseFromString(data)
-
-        print("[LoginLogic] Registe response = " .. tabStr(decode) .. type(decode))
+        print("[LoginLogic] Login response = " .. tabStr(decode))
         print(decode.code)
-        print(decode.err.code)
-        print(decode.err.msg)
-        
-        if decode.code == login_pb.SUCCESS then
+        print(login_pb.SUCCESS)
+
+        if decode.code == "SUCCESS" then
             LocalDataManager:SaveUid(decode.uid)
             if cb then
                 cb(true)
@@ -67,12 +28,51 @@ function _LoginLogic:Registe(accout, password, cb)
                 cb(false, decode.err)
             end
         end
-    end) 
 
-    -- local registe = login_pb.RegisteRequest()
-    -- registe.account = accout
-    -- registe.password = password
-    -- local msg = registe:SerializeToString()
+        Event.RemoveListener(Protocal.KeyOf("LoginResponse"), loginResponseFunc)
+    end
+    Event.AddListener(Protocal.KeyOf("LoginResponse"), loginResponseFunc) 
+
+    local login = {
+        account = accout,
+        password = password
+    }
+    local code = protobuf.encode("msg.LoginRequest", login)
+    local buffer = ByteBuffer.New()
+    buffer:WriteShort(Protocal.KeyOf("LoginRequest"))
+    buffer:WriteBuffer(code)
+    networkMgr:SendMessage(buffer)
+end
+
+function _LoginLogic:Registe(accout, password, cb)
+    print("[LoginLogic] Registe account = " .. accout .. " password = " .. password)
+
+    local registeResponseFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[LoginLogic] Registe response")
+
+        local decode = protobuf.decode("msg.RegisteResponse", data)
+
+        print("[LoginLogic] Registe response = " .. tabStr(decode) .. type(decode))
+        print(decode.code)
+        print(decode.err.code)
+        print(decode.err.msg)
+        
+        if decode.code == "SUCCESS" then
+            LocalDataManager:SaveUid(decode.uid)
+            if cb then
+                cb(true)
+            end
+        else
+            if cb then
+                cb(false, decode.err)
+            end
+        end
+
+        Event.RemoveListener(Protocal.KeyOf("RegisteResponse"), registeResponseFunc) 
+    end
+    Event.AddListener(Protocal.KeyOf("RegisteResponse"), registeResponseFunc) 
 
     local registe = {
         account = accout,

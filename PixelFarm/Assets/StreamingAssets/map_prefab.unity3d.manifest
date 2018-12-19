@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3952181823
+CRC: 203150363
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c5eafed777a1bedff600ed9c543c66cf
+    Hash: d8887613380d8d387dcb2feacf4d25f7
   TypeTreeHash:
     serializedVersion: 2
-    Hash: bd72b58e369baf9405174d67956c6bd6
+    Hash: 717fc5c31b9086943f6b8d6b0bfeb90c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -32,4 +32,4 @@ ClassTypes:
 Assets:
 - Assets/PixelFarmResources/Map/UIPrefabs/MapView.prefab
 Dependencies:
-- E:/gitHub/PixelFarm/PixelClient/PixelFarm/Assets/StreamingAssets/map_asset.unity3d
+- /Users/zlk/Documents/GitHub/PixelClient/PixelFarm/Assets/StreamingAssets/map_asset.unity3d

@@ -1,3 +1,9 @@
+local json = require "cjson"
+
+-- table 转 字符串
+function tabStr(data)
+	return json.encode(data)
+end
 
 --输出日志--
 function log(str)

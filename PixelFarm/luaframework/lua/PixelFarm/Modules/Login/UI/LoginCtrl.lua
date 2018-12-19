@@ -1,4 +1,4 @@
-local LoginLogic = require "PixelFarm.Login.Logic.LoginLogic"
+local LoginLogic = require "PixelFarm.Modules.Login.Logic.LoginLogic"
 
 local _LoginCtrl = class(CtrlBase)
 
@@ -11,6 +11,18 @@ function _LoginCtrl:Login(accout, password)
     LoginLogic:Login(accout,password,function ()
         CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
         CtrlManager:CloseCtrl(LoginCtrlNames.Login)
+    end)
+end
+
+function _LoginCtrl:Registe(accout, password)
+    LoginLogic:Registe(accout,password,function (succeed, err)
+        if succeed then
+            CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
+            CtrlManager:CloseCtrl(LoginCtrlNames.Login)
+        else
+            print("regsite fail")
+            CtrlManager:GetCtrl(CommonCtrlNames.Toast):ShowToast(err.msg)
+        end
     end)
 end
 
