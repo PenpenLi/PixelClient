@@ -1,17 +1,7 @@
 
-local _MapView = class(ViewBase)
+local _M = class(ViewBase)
 
-local _mapSize = {
-    w = 2560,
-    h = 1280
-}
-
-local _cellSize = {
-    w = 64,
-    h = 64
-}
-
-function _MapView:OnCreate()
+function _M:OnCreate()
     print("_MapView oncreate  ~~~~~~~")
 
     self.mapRoot = self.transform:Find("cells/Viewport/Content").gameObject
@@ -20,60 +10,50 @@ function _MapView:OnCreate()
     self:InitMap()
 end
 
-function _MapView:InitMap()
-    local wCount = _mapSize.w / _cellSize.w
-    local hCount = _mapSize.h / _cellSize.h
-    print("wCount = " .. wCount)
-    print("hCount = " .. hCount)
+function _M:InitMap()
+    local map = self.iCtrl:LoadMap()
+    print(tabStr(map))
 
-    for i=0,wCount do
-        for j=0,hCount do
+    local wCount = map.mapIndex
+    local hCount = map.mapIndex
+
+    for j,row in ipairs(map.mapIndex) do
+        for i,cell in ipairs(row) do
             local cellObj = newObject(self.mapCell)
             cellObj.transform:SetParent(self.mapRoot.transform, false)
             cellObj.transform.localScale = Vector3(1,1,1)
-            cellObj.transform.localPosition = Vector3(i*_cellSize.w - _mapSize.w * 0.5, j*_cellSize.h - _mapSize.h * 0.5, 0)
-            if math.random(1,2) == 1 then
+
+            local x = i*cell.cellSize.w - map.mapSize.w * 0.5
+
+            local y = math.floor(j/2)*cell.cellSize.h - map.mapSize.h * 0.25
+            if j%2 == 1 then
+                x = x - cell.cellSize.w * 0.5
+                y = y + cell.cellSize.h * 0.5
+            end
+
+            cellObj.transform.localPosition = Vector3(x, y, 0)
+            if cell.type == CellType.Land then
                 cellObj.transform:Find("grass").gameObject:SetActive(false)
                 cellObj.transform:Find("land").gameObject:SetActive(true)
-            else
+            elseif cell.type == CellType.Grass then
                 cellObj.transform:Find("grass").gameObject:SetActive(true)
                 cellObj.transform:Find("land").gameObject:SetActive(false)
             end
             cellObj:SetActive(true)
 
             cellObj:GetComponent("Button").onClick:AddListener(function ()
-                self:OnClickCell(i,j)
-            end)
-        end
-    end
-    for i=0,wCount do
-        for j=0,hCount do
-            local cellObj = newObject(self.mapCell)
-            cellObj.transform:SetParent(self.mapRoot.transform, false)
-            cellObj.transform.localScale = Vector3(1,1,1)
-            cellObj.transform.localPosition = Vector3(i*_cellSize.w - _mapSize.w * 0.5 + _cellSize.w*0.5, j*_cellSize.h - _mapSize.h * 0.5 + _cellSize.h * 0.5, 0)
-            if math.random(1,2) == 1 then
-                cellObj.transform:Find("grass").gameObject:SetActive(false)
-                cellObj.transform:Find("land").gameObject:SetActive(true)
-            else
-                cellObj.transform:Find("grass").gameObject:SetActive(true)
-                cellObj.transform:Find("land").gameObject:SetActive(false)
-            end
-            cellObj:SetActive(true)
-
-            cellObj:GetComponent("Button").onClick:AddListener(function ()
-                self:OnClickCell(i,j)
+                self:OnClickCell(cell)
             end)
         end
     end
 end
 
-function _MapView:OnClickCell(row, col)
-    print(row .. "," .. col)
+function _M:OnClickCell(cell)
+    print(tabStr(cell))
 end
 
-function _MapView:OnDestroy()
+function _M:OnDestroy()
     
 end
 
-return _MapView
+return _M

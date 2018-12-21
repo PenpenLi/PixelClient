@@ -23,15 +23,15 @@ function _M:InitMap()
             cellObj.transform:SetParent(self.mapRoot.transform, false)
             cellObj.transform.localScale = Vector3(1,1,1)
 
-            local x = i*cell.cellSize.w - map.mapSize.w * 0.5
-            -- if i%2 == 1 then
-            --     x = x - cell.cellSize.w * 0.5
-            -- end
+            cellW = cell.cellSize.w
+            cellH = cell.cellSize.h
 
-            local y = j*cell.cellSize.h - map.mapSize.h * 0.5
+            local x = (i-1)*cell.cellSize.w - map.mapSize.w * 0.5
+
+            local y = math.floor((j-1)/2)*cell.cellSize.h - map.mapSize.h * 0.25
             if j%2 == 1 then
                 x = x - cell.cellSize.w * 0.5
-                y = y - cell.cellSize.h * 0.5
+                y = y + cell.cellSize.h * 0.5
             end
 
             cellObj.transform.localPosition = Vector3(x, y, 0)
@@ -49,6 +49,8 @@ function _M:InitMap()
             end)
         end
     end
+
+    self.mapRoot:GetComponent("RectTransform").sizeDelta = Vector2(map.mapSize.w, map.mapSize.h * 0.5)
 end
 
 function _M:OnClickCell(cell)

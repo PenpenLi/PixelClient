@@ -5,6 +5,11 @@ function tabStr(data)
 	return json.encode(data)
 end
 
+-- 字符串 转 table
+function strTab(str)
+	return json.decode(str)
+end
+
 --输出日志--
 function log(str)
     Util.Log(str);

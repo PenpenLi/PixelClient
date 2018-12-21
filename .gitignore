@@ -38,3 +38,9 @@ Assets/LuaFramework/ToLua/Source/Generate/
 # Builds
 *.apk
 *.unitypackage
+PixelFarm/Assets/LuaFramework/ToLua/Source/Generate/BaseWrap.cs.meta
+PixelFarm/Assets/LuaFramework/ToLua/Source/Generate/BaseWrap.cs.meta
+PixelFarm/Assets/LuaFramework/ToLua/Source/Generate/BaseWrap.cs.meta
+PixelFarm/Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_ResourceManagerWrap.cs.meta
+PixelFarm/Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_UI_GraphicWrap.cs.meta
+PixelFarm/Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_UI_MaskableGraphicWrap.cs.meta

@@ -1,4 +1,4 @@
-local LoginLogic = require "PixelFarm.Modules.Login.Logic.LoginLogic"
+require "PixelFarm.Modules.Login.interface.LoginInterface"
 
 local _LoadingCtrl = class(CtrlBase)
 
@@ -8,8 +8,8 @@ function _LoadingCtrl:StartView()
 end
 
 function _LoadingCtrl:ShowMainView()
-    if #LocalDataManager:GetUid() > 0 then
-        LoginLogic:Login(LocalDataManager:GetUid(),"",function (succeed, err)
+    if #LoginInterface:GetUid() > 0 then
+        LoginInterface:Login(LoginInterface:GetUid(),"",function (succeed, err)
             if succeed then
                 CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
             else
