@@ -14,6 +14,14 @@ MoudleNames = {
     Main = "Main",
     Login = "Login",
     Map = "Map",
+    Farm = "Farm",
+    Factory = "Factory",
+    Tech = "Tech",
+    Jetty = "Jetty",
+    Mine = "Mine",
+    Zoo = "Zoo",
+    Airport = "Airport",
+    Train = "Train"
 }
 
 -- UI层级
@@ -30,4 +38,12 @@ require "PixelFarm/Modules/Loading/LoadingDefine"
 require "PixelFarm/Modules/Main/MainDefine"
 require "PixelFarm/Modules/Login/LoginDefine"
 require "PixelFarm/Modules/Map/MapDefine"
+require "PixelFarm/Modules/Farm/FarmDefine"
+require "PixelFarm/Modules/Tech/TechDefine"
+require "PixelFarm/Modules/Factory/FactoryDefine"
+require "PixelFarm/Modules/Jetty/JettyDefine"
+require "PixelFarm/Modules/Mine/MineDefine"
+require "PixelFarm/Modules/Zoo/ZooDefine"
+require "PixelFarm/Modules/Airport/AirportDefine"
+require "PixelFarm/Modules/Train/TrainDefine"
 require "PixelFarm/Modules/Common/CommonDefine"
