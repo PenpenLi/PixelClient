@@ -32,5 +32,9 @@ end
 function _M:Load(key)
     local str = PlayerPrefs.GetString(key)
     print("[LocalDataManager.Load] str = " .. str)
-    return strTab(str)
+    if str == nil or #str == 0 then
+        return nil
+    else
+        return strTab(str)
+    end
 end

@@ -1,5 +1,4 @@
 
-
 AppName = "PixelFarm"
 
 App = {
@@ -21,7 +20,9 @@ MoudleNames = {
     Mine = "Mine",
     Zoo = "Zoo",
     Airport = "Airport",
-    Train = "Train"
+    Train = "Train",
+    PlayerInfo = "PlayerInfo",
+    Building = "Building"
 }
 
 -- UI层级
@@ -46,4 +47,5 @@ require "PixelFarm/Modules/Mine/MineDefine"
 require "PixelFarm/Modules/Zoo/ZooDefine"
 require "PixelFarm/Modules/Airport/AirportDefine"
 require "PixelFarm/Modules/Train/TrainDefine"
+require "PixelFarm/Modules/Building/BuildingDefine"
 require "PixelFarm/Modules/Common/CommonDefine"

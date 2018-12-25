@@ -6,17 +6,56 @@ function _M:OnCreate()
 
     self.ctrlBtn = self.transform:Find("ctrlBtn").gameObject
     self.ctrlBtnText = self.transform:Find("ctrlBtn/text"):GetComponent("Text")
-    self.ctrlBlock = self:InitCtrlBlock(self.transform, "ctrlGroup")
-
     self.ctrlBtn:SetOnClick(function ()
         self:OnCtrlClick()
     end)
+
+    self.ctrlBlock = self:InitCtrlBlock(self.transform, "ctrlGroup")
+    self.playerBlock = self:InitPlayerBlock(self.transform, "LT")
+    self.goldBlock = self:InitGoldBlock(self.transform, "RT")
+
+    self:InitData()
+end
+
+function _M:InitData()
+    local player = self.iCtrl:CurrentPlayer()
+
+    print(tabStr(player))
+    self.playerBlock.lvText.text = player.level
+    self:UpdateExpUI(player)
+    self:UpdatePeopleUI(player)
+    self:UpdateGoldUI(player)
+end
+
+function _M:InitPlayerBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    block.headImage = transform:Find("head"):GetComponent("Image")
+    block.lvText = transform:Find("head/lv/text"):GetComponent("Text")
+    block.expBgRect = transform:Find("exp"):GetComponent("RectTransform")
+    block.expFontRect = transform:Find("exp/font"):GetComponent("RectTransform")
+    block.peopleBgRect = transform:Find("people"):GetComponent("RectTransform")
+    block.peopleFontRect = transform:Find("people/font"):GetComponent("RectTransform")
+    block.peoplePercentText = transform:Find("people/percent"):GetComponent("Text")
+    return block
+end
+
+function _M:InitGoldBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    block.coinText = transform:Find("coin/text"):GetComponent("Text")
+    block.lvChaoText = transform:Find("lvChao/text"):GetComponent("Text")
+    block.diamondText = transform:Find("diamond/text"):GetComponent("Text")
+    return block
 end
 
 function _M:InitCtrlBlock(trans, path)
     local block = {}
     local transform = trans:Find(path)
     block.transform = transform
+    block.buildingBtn = transform:Find("buildingBtn").gameObject
     block.farmBtn = transform:Find("farmBtn").gameObject
     block.factoryBtn = transform:Find("factoryBtn").gameObject
     block.techBtn = transform:Find("techBtn").gameObject
@@ -25,6 +64,11 @@ function _M:InitCtrlBlock(trans, path)
     block.zooBtn = transform:Find("zooBtn").gameObject
     block.airportBtn = transform:Find("airportBtn").gameObject
     block.trainBtn = transform:Find("trainBtn").gameObject
+
+    block.buildingBtn:SetOnClick(function ()
+        self:OnBuildingClick()
+        self.ctrlBlock.transform.gameObject:SetActive(false)
+    end)
 
     block.farmBtn:SetOnClick(function ()
         self:OnFarmClick()
@@ -71,6 +115,10 @@ function _M:OnCtrlClick()
     end
 end
 
+function _M:OnBuildingClick()
+    self.iCtrl:ShowBuilding()
+end
+
 function _M:OnFarmClick()
     self.iCtrl:ShowFarm()
 end
@@ -101,6 +149,33 @@ end
 
 function _M:OnTrainClick()
     self.iCtrl:ShowTrain()
+end
+
+function _M:UpdateExpUI(player)
+    local levelUpExp = player.levelUpExp
+    if levelUpExp == 0 then
+        levelUpExp = 1
+    end
+    local expPercent = player.exp / levelUpExp
+    local expBgSize = self.playerBlock.expBgRect.sizeDelta
+    self.playerBlock.expFontRect.offsetMax = Vector2(-expBgSize.x * (1 - expPercent), 0)
+end
+
+function _M:UpdatePeopleUI(player)
+    local maxPeople = player.maxPeople
+    if maxPeople == 0 then
+        maxPeople = 1
+    end
+    local peoplePercent = player.people / maxPeople
+    local expBgSize = self.playerBlock.peopleBgRect.sizeDelta
+    self.playerBlock.peopleFontRect.offsetMax = Vector2(-expBgSize.x * (1 - peoplePercent), 0)
+    self.playerBlock.peoplePercentText.text = player.people .. "/" .. maxPeople
+end
+
+function _M:UpdateGoldUI(player)
+    self.goldBlock.coinText.text = player.gold
+    self.goldBlock.lvChaoText.text = player.lvChao
+    self.goldBlock.diamondText.text = player.baoShi
 end
 
 function _M:OnDestroy()

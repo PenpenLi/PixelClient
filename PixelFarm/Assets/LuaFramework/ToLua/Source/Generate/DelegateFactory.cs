@@ -64,6 +64,7 @@ public class DelegateFactory
 		dict.Add(typeof(System.Action<NotiData>), factory.System_Action_NotiData);
 		dict.Add(typeof(System.Action<UnityEngine.Object[]>), factory.System_Action_UnityEngine_Objects);
 		dict.Add(typeof(UnityEngine.UI.InputField.OnValidateInput), factory.UnityEngine_UI_InputField_OnValidateInput);
+		dict.Add(typeof(UnityEngine.Events.UnityAction<float>), factory.UnityEngine_Events_UnityAction_float);
 		dict.Add(typeof(UGUIEventListener.VoidDelegate), factory.UGUIEventListener_VoidDelegate);
 		dict.Add(typeof(UGUIEventListener.BoolDelegate), factory.UGUIEventListener_BoolDelegate);
 		dict.Add(typeof(UGUIEventListener.VectorDelegate), factory.UGUIEventListener_VectorDelegate);
@@ -119,6 +120,7 @@ public class DelegateFactory
 		DelegateTraits<System.Action<NotiData>>.Init(factory.System_Action_NotiData);
 		DelegateTraits<System.Action<UnityEngine.Object[]>>.Init(factory.System_Action_UnityEngine_Objects);
 		DelegateTraits<UnityEngine.UI.InputField.OnValidateInput>.Init(factory.UnityEngine_UI_InputField_OnValidateInput);
+		DelegateTraits<UnityEngine.Events.UnityAction<float>>.Init(factory.UnityEngine_Events_UnityAction_float);
 		DelegateTraits<UGUIEventListener.VoidDelegate>.Init(factory.UGUIEventListener_VoidDelegate);
 		DelegateTraits<UGUIEventListener.BoolDelegate>.Init(factory.UGUIEventListener_BoolDelegate);
 		DelegateTraits<UGUIEventListener.VectorDelegate>.Init(factory.UGUIEventListener_VectorDelegate);
@@ -174,6 +176,7 @@ public class DelegateFactory
 		TypeTraits<System.Action<NotiData>>.Init(factory.Check_System_Action_NotiData);
 		TypeTraits<System.Action<UnityEngine.Object[]>>.Init(factory.Check_System_Action_UnityEngine_Objects);
 		TypeTraits<UnityEngine.UI.InputField.OnValidateInput>.Init(factory.Check_UnityEngine_UI_InputField_OnValidateInput);
+		TypeTraits<UnityEngine.Events.UnityAction<float>>.Init(factory.Check_UnityEngine_Events_UnityAction_float);
 		TypeTraits<UGUIEventListener.VoidDelegate>.Init(factory.Check_UGUIEventListener_VoidDelegate);
 		TypeTraits<UGUIEventListener.BoolDelegate>.Init(factory.Check_UGUIEventListener_BoolDelegate);
 		TypeTraits<UGUIEventListener.VectorDelegate>.Init(factory.Check_UGUIEventListener_VectorDelegate);
@@ -229,6 +232,7 @@ public class DelegateFactory
 		StackTraits<System.Action<NotiData>>.Push = factory.Push_System_Action_NotiData;
 		StackTraits<System.Action<UnityEngine.Object[]>>.Push = factory.Push_System_Action_UnityEngine_Objects;
 		StackTraits<UnityEngine.UI.InputField.OnValidateInput>.Push = factory.Push_UnityEngine_UI_InputField_OnValidateInput;
+		StackTraits<UnityEngine.Events.UnityAction<float>>.Push = factory.Push_UnityEngine_Events_UnityAction_float;
 		StackTraits<UGUIEventListener.VoidDelegate>.Push = factory.Push_UGUIEventListener_VoidDelegate;
 		StackTraits<UGUIEventListener.BoolDelegate>.Push = factory.Push_UGUIEventListener_BoolDelegate;
 		StackTraits<UGUIEventListener.VectorDelegate>.Push = factory.Push_UGUIEventListener_VectorDelegate;
@@ -3064,6 +3068,63 @@ public class DelegateFactory
 	}
 
 	void Push_UnityEngine_UI_InputField_OnValidateInput(IntPtr L, UnityEngine.UI.InputField.OnValidateInput o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class UnityEngine_Events_UnityAction_float_Event : LuaDelegate
+	{
+		public UnityEngine_Events_UnityAction_float_Event(LuaFunction func) : base(func) { }
+		public UnityEngine_Events_UnityAction_float_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(float param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(float param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public UnityEngine.Events.UnityAction<float> UnityEngine_Events_UnityAction_float(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			UnityEngine.Events.UnityAction<float> fn = delegate(float param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			UnityEngine_Events_UnityAction_float_Event target = new UnityEngine_Events_UnityAction_float_Event(func);
+			UnityEngine.Events.UnityAction<float> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			UnityEngine_Events_UnityAction_float_Event target = new UnityEngine_Events_UnityAction_float_Event(func, self);
+			UnityEngine.Events.UnityAction<float> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_UnityEngine_Events_UnityAction_float(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(UnityEngine.Events.UnityAction<float>), L, pos);
+	}
+
+	void Push_UnityEngine_Events_UnityAction_float(IntPtr L, UnityEngine.Events.UnityAction<float> o)
 	{
 		ToLua.Push(L, o);
 	}

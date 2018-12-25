@@ -1,3 +1,4 @@
+local FarmLogic = require "PixelFarm.Modules.Farm.Logic.FarmLogic"
 
 local _M = class(CtrlBase)
 
@@ -8,6 +9,10 @@ end
 
 function _M:Close()
     CtrlManager:CloseCtrl(FarmCtrlNames.Farm)
+end
+
+function _M:GetPlants()
+    return FarmLogic:GetPlants()
 end
 
 return _M

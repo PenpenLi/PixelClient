@@ -1,4 +1,6 @@
 
+local PlayerInterface = require "PixelFarm.Modules.PlayerInfo.Interface.PlayerInfoInterface"
+
 local _LoginLogic = class()
 
 -- 登录
@@ -83,15 +85,7 @@ function _LoginLogic:Registe(accout, password, cb)
 end
 
 function _LoginLogic:SaveUid(uid)
-    local _UidO = {}
-    _UidO.uid = uid
-    LocalDataManager:Save(MoudleNames.Login .. "Uid", _UidO)
-end
-
-function _LoginLogic:LoadUid()
-    local key = MoudleNames.Login .. "Uid"
-    local _UidO = LocalDataManager:Load(key)
-    return _UidO.uid
+    PlayerInterface:UpdateUid(uid)
 end
 
 return _LoginLogic
