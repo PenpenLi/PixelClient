@@ -2,6 +2,8 @@ local _M = class()
 
 function _M:Init(tab)
     local _t = tab or {}
+    -- id
+    self.id = t.id or 0
     -- 名称
     self.name = _t.name or ""
     -- 成本
@@ -17,10 +19,10 @@ function _M:Init(tab)
 
     -- 是否解锁
     self.isLock = _t.isLock or true
-    -- 种植数量
-    self.growNum = _t.growNum or 0
-    -- 可收货数量
-    self.gainNum = _t.gainNum or 0
+    -- -- 种植数量
+    -- self.growNum = _t.growNum or 0
+    -- -- 可收货数量
+    -- self.gainNum = _t.gainNum or 0
 end
 
 return _M

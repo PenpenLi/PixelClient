@@ -75,10 +75,11 @@ function _M:InitData()
     end
 end
 
+-- 点击一个物种
 function _M:OnPlantItemClick(plant)
     self.operBlock.data = plant
 
-    self.operBlock.growSlider.minValue = plant.growNum
+    self.operBlock.growSlider.minValue = 0
     self.operBlock.growSlider.maxValue = self.maxLand
     self.operBlock.growSlider.value = plant.growNum
     self.operBlock.growNumText.text = plant.growNum .. " / " .. self.maxLand
@@ -90,6 +91,7 @@ function _M:OnPlantItemClick(plant)
     self:ShowOper()
 end
 
+-- 播种变化
 function _M:OnGrowSliderChanged()
     local curValue = self.operBlock.growSlider.value
     self.operBlock.growNumText.text = math.floor(curValue) .. " / " .. self.maxLand
