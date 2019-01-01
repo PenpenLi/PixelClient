@@ -13,6 +13,7 @@ public class UGUIEventListenerWrap
 		L.RegFunction("ClearAllowObj", ClearAllowObj);
 		L.RegFunction("ClearAllowEvent", ClearAllowEvent);
 		L.RegFunction("Get", Get);
+		L.RegFunction("Remove", Remove);
 		L.RegFunction("HandleEventToObj", HandleEventToObj);
 		L.RegFunction("AutoRegistCMDEvent", AutoRegistCMDEvent);
 		L.RegFunction("PostCmdMsg", PostCmdMsg);
@@ -172,6 +173,22 @@ public class UGUIEventListenerWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UGUIEventListener.Get");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Remove(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+			UGUIEventListener.Remove(arg0);
+			return 0;
 		}
 		catch (Exception e)
 		{

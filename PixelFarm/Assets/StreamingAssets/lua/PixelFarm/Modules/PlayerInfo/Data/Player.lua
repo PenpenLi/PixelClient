@@ -13,12 +13,12 @@ function _M:Init(tab)
     -- 升级需要的经验值
     self.levelUpExp = _t.levelUpExp or 0
     -- 人口
-    self.people = _t.people or 0
+    self.people = _t.people or 75
     -- 可以达到的人口
     self.maxPeople = _t.maxPeople or 0
 
     -- 金币
-    self.gold = _t.gold or 0
+    self.coin = _t.coin or 0
     -- 绿钞
     self.lvChao = _t.lvChao or 0
     -- 宝石

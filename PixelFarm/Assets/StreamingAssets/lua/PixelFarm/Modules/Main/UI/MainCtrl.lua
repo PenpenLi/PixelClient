@@ -4,13 +4,21 @@ local _M = class(CtrlBase)
 
 function _M:StartView()
     print("_MainCtrl startView ~~~~~~~")
-    ViewManager:Start(self, MoudleNames.Main, MainViewNames.Main, PANEL_HIGH(), self.args)
+    ViewManager:Start(self, MoudleNames.Main, MainViewNames.Main, PANEL_MID(), self.args)
     
     self.ctrlCache = {}
+
+    Event.AddListener(EventType.CoinChanged, function (arg1, arg2)
+        self:OnCoinChanged(arg1, arg2)
+    end)
 end
 
 function _M:CurrentPlayer()
     return PlayerInterface:CurrentPlayer()
+end
+
+function _M:ShowTownCenter()
+    self:OpenCtrl(MoudleNames.Town, TownCtrlNames.Town)
 end
 
 function _M:ShowBuilding()
@@ -47,6 +55,12 @@ end
 
 function _M:ShowTrain()
     CtrlManager:OpenCtrl(MoudleNames.Train, TrainCtrlNames.Train)
+end
+
+function _M:OnCoinChanged(arg1, arg2)
+    local player = self:CurrentPlayer()
+    player.coin = arg2
+    self.view:UpdateCoinUI(player)
 end
 
 function _M:OpenCtrl(moduleName, ctrlName)

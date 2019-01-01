@@ -9,12 +9,18 @@ function _M:OnCreate()
     self.ctrlBtn:SetOnClick(function ()
         self:OnCtrlClick()
     end)
+    self.townCenterBtn = self.transform:Find("townCenterBtn").gameObject
+    self.townCenterBtn:SetOnClick(function ()
+        self:OnTownCenterClick()
+    end)
 
     self.ctrlBlock = self:InitCtrlBlock(self.transform, "ctrlGroup")
     self.playerBlock = self:InitPlayerBlock(self.transform, "LT")
-    self.goldBlock = self:InitGoldBlock(self.transform, "RT")
+    self.coinBlock = self:InitCoinBlock(self.transform, "RT")
 
     self:InitData()
+
+    self.iCtrl:ShowTownCenter()
 end
 
 function _M:InitData()
@@ -24,7 +30,7 @@ function _M:InitData()
     self.playerBlock.lvText.text = player.level
     self:UpdateExpUI(player)
     self:UpdatePeopleUI(player)
-    self:UpdateGoldUI(player)
+    self:UpdateCoinUI(player)
 end
 
 function _M:InitPlayerBlock(trans, path)
@@ -41,7 +47,7 @@ function _M:InitPlayerBlock(trans, path)
     return block
 end
 
-function _M:InitGoldBlock(trans, path)
+function _M:InitCoinBlock(trans, path)
     local block = {}
     local transform = trans:Find(path)
     block.transform = transform
@@ -115,12 +121,18 @@ function _M:OnCtrlClick()
     end
 end
 
+function _M:OnTownCenterClick()
+    self.iCtrl:ShowTownCenter()
+    self.townCenterBtn:SetActive(false)
+end
+
 function _M:OnBuildingClick()
     self.iCtrl:ShowBuilding()
 end
 
 function _M:OnFarmClick()
     self.iCtrl:ShowFarm()
+    self.townCenterBtn:SetActive(true)
 end
 
 function _M:OnFactoryClick()
@@ -172,10 +184,10 @@ function _M:UpdatePeopleUI(player)
     self.playerBlock.peoplePercentText.text = player.people .. "/" .. maxPeople
 end
 
-function _M:UpdateGoldUI(player)
-    self.goldBlock.coinText.text = player.gold
-    self.goldBlock.lvChaoText.text = player.lvChao
-    self.goldBlock.diamondText.text = player.baoShi
+function _M:UpdateCoinUI(player)
+    self.coinBlock.coinText.text = player.coin
+    self.coinBlock.lvChaoText.text = player.lvChao
+    self.coinBlock.diamondText.text = player.baoShi
 end
 
 function _M:OnDestroy()

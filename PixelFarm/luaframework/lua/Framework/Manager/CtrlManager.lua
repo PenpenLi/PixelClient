@@ -27,7 +27,8 @@ function _CtrlManager:OpenCtrl(moduleName, ctrlName, ...)
         ctrlBean = {ctrlName, viewCtrl, isDeling = false}
         self.aliveViewCtrls[#self.aliveViewCtrls + 1] = ctrlBean
     end
-    return viewCtrl:StartView()
+    viewCtrl:StartView()
+    return viewCtrl
 end
 
 -- 关闭ctrl，并清理数据

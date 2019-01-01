@@ -22,7 +22,9 @@ MoudleNames = {
     Airport = "Airport",
     Train = "Train",
     PlayerInfo = "PlayerInfo",
-    Building = "Building"
+    Building = "Building",
+    Storage = "Storage",
+    Town = "Town"
 }
 
 -- UI层级
@@ -48,4 +50,8 @@ require "PixelFarm/Modules/Zoo/ZooDefine"
 require "PixelFarm/Modules/Airport/AirportDefine"
 require "PixelFarm/Modules/Train/TrainDefine"
 require "PixelFarm/Modules/Building/BuildingDefine"
+require "PixelFarm/Modules/Storage/StorageDefine"
+require "PixelFarm/Modules/Town/TownDefine"
 require "PixelFarm/Modules/Common/CommonDefine"
+
+require "PixelFarm.EventDefine"

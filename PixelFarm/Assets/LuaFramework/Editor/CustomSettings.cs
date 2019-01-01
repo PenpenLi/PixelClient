@@ -8,6 +8,7 @@ using UnityEditor;
 using BindType = ToLuaMenu.BindType;
 using UnityEngine.UI;
 using System.Reflection;
+using UnityEngine.EventSystems;
 
 public static class CustomSettings
 {
@@ -183,9 +184,15 @@ public static class CustomSettings
         _GT(typeof(Button.ButtonClickedEvent)),
         _GT(typeof(Slider)),
         _GT(typeof(Slider.SliderEvent)),
+        _GT(typeof(ScrollRect)),
+        _GT(typeof(PointerEventData)),
+        _GT(typeof(CanvasGroup)),
+        _GT(typeof(Image)),
 
         _GT(typeof(Vector2)),
         _GT(typeof(Vector3)),
+        _GT(typeof(Color32)),
+        _GT(typeof(Color)),
 
         _GT(typeof(UGUIEventListener)),
     #endregion

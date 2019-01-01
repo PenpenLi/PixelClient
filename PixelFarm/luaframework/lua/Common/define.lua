@@ -31,3 +31,4 @@ WWW = UnityEngine.WWW
 GameObject = UnityEngine.GameObject
 PlayerPrefs = UnityEngine.PlayerPrefs
 Application = UnityEngine.Application
+Color = UnityEngine.Color

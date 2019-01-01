@@ -8,9 +8,13 @@ function _LoginCtrl:StartView()
 end
 
 function _LoginCtrl:Login(accout, password)
-    LoginLogic:Login(accout,password,function ()
-        CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
-        CtrlManager:CloseCtrl(LoginCtrlNames.Login)
+    LoginLogic:Login(accout,password,function (succeed, err)
+        if succeed then
+            CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
+            CtrlManager:CloseCtrl(LoginCtrlNames.Login)
+        else
+            CtrlManager:GetCtrl(CommonCtrlNames.Toast):ShowToast(err.msg)
+        end
     end)
 end
 
@@ -20,7 +24,6 @@ function _LoginCtrl:Registe(accout, password)
             CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
             CtrlManager:CloseCtrl(LoginCtrlNames.Login)
         else
-            print("regsite fail")
             CtrlManager:GetCtrl(CommonCtrlNames.Toast):ShowToast(err.msg)
         end
     end)

@@ -136,6 +136,7 @@ public class UGUIEventListener : MonoBehaviour, IEventSystemHandler,
     {
         UGUIEventListener listener = go.GetComponent<UGUIEventListener>();
         if (listener == null) listener = go.AddComponent<UGUIEventListener>();
+        listener.enabled = true;
 
         if (isRegistCmdMsg)
         {
@@ -143,6 +144,15 @@ public class UGUIEventListener : MonoBehaviour, IEventSystemHandler,
         }
 
         return listener;
+    }
+
+    static public void Remove(GameObject go)
+    {
+        UGUIEventListener listener = go.GetComponent<UGUIEventListener>();
+        if (listener)
+        {
+            listener.enabled = false;
+        }
     }
 
     #region 自动事件触发系统
@@ -410,6 +420,7 @@ public class UGUIEventListener : MonoBehaviour, IEventSystemHandler,
             }
         }
     }
+
 
     public void OnDrop(PointerEventData eventData)
     {

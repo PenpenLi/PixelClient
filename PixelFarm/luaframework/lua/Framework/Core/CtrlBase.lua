@@ -42,14 +42,12 @@ end
 function CtrlBase:Hide()
     if self.view then
         self.view:Hide()
-        self.view.isHiding = true
 	end
 end
 
 function CtrlBase:Show()
     if self.view then
         self.view:Show()
-        self.view.isHiding = false
 	end
 end
 

@@ -105,11 +105,15 @@ public static class LuaBinder
 		UnityEngine_ResourcesWrap.Register(L);
 		UnityEngine_RectTransformWrap.Register(L);
 		UnityEngine_PlayerPrefsWrap.Register(L);
+		UnityEngine_CanvasGroupWrap.Register(L);
+		UnityEngine_Color32Wrap.Register(L);
 		L.BeginModule("UI");
 		UnityEngine_UI_TextWrap.Register(L);
 		UnityEngine_UI_InputFieldWrap.Register(L);
 		UnityEngine_UI_ButtonWrap.Register(L);
 		UnityEngine_UI_SliderWrap.Register(L);
+		UnityEngine_UI_ScrollRectWrap.Register(L);
+		UnityEngine_UI_ImageWrap.Register(L);
 		UnityEngine_UI_MaskableGraphicWrap.Register(L);
 		UnityEngine_UI_GraphicWrap.Register(L);
 		UnityEngine_UI_SelectableWrap.Register(L);
@@ -124,7 +128,10 @@ public static class LuaBinder
 		L.EndModule();
 		L.EndModule();
 		L.BeginModule("EventSystems");
+		UnityEngine_EventSystems_PointerEventDataWrap.Register(L);
 		UnityEngine_EventSystems_UIBehaviourWrap.Register(L);
+		UnityEngine_EventSystems_BaseEventDataWrap.Register(L);
+		UnityEngine_EventSystems_AbstractEventDataWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("Events");
 		UnityEngine_Events_UnityEventWrap.Register(L);

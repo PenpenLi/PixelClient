@@ -80,6 +80,9 @@ public class UnityEngine_TransformWrap
 		L.RegFunction("SetPosition", SetPosition);
 		L.RegFunction("GetTransform", GetTransform);
 		L.RegFunction("SetOnDoubleClick", SetOnDoubleClick);
+		L.RegFunction("SetOnDrag", SetOnDrag);
+		L.RegFunction("SetOnDragEnd", SetOnDragEnd);
+		L.RegFunction("SetOnDragStart", SetOnDragStart);
 		L.RegFunction("SetOnClick", SetOnClick);
 		L.RegFunction("FindChildDeepSearch", FindChildDeepSearch);
 		L.RegFunction("SetParentSiblingByZ", SetParentSiblingByZ);
@@ -2723,6 +2726,105 @@ public class UnityEngine_TransformWrap
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Transform.SetOnDoubleClick");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetOnDrag(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				UnityEngine.Transform obj = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
+				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				obj.SetOnDrag(arg0);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				UnityEngine.Transform obj = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
+				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				object arg1 = ToLua.ToVarObject(L, 3);
+				obj.SetOnDrag(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Transform.SetOnDrag");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetOnDragEnd(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				UnityEngine.Transform obj = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
+				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				obj.SetOnDragEnd(arg0);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				UnityEngine.Transform obj = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
+				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				object arg1 = ToLua.ToVarObject(L, 3);
+				obj.SetOnDragEnd(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Transform.SetOnDragEnd");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetOnDragStart(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				UnityEngine.Transform obj = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
+				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				obj.SetOnDragStart(arg0);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				UnityEngine.Transform obj = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
+				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				object arg1 = ToLua.ToVarObject(L, 3);
+				obj.SetOnDragStart(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Transform.SetOnDragStart");
 			}
 		}
 		catch (Exception e)

@@ -27,8 +27,9 @@ public class UnityEngine_GameObjectWrap
 		L.RegFunction("SetOnDoubleClick", SetOnDoubleClick);
 		L.RegFunction("SetOneClick", SetOneClick);
 		L.RegFunction("SetLongPress", SetLongPress);
+		L.RegFunction("RemoveUGUIEventListener", RemoveUGUIEventListener);
 		L.RegFunction("SetOnDragEnd", SetOnDragEnd);
-		L.RegFunction("SetOnDarg", SetOnDarg);
+		L.RegFunction("SetOnDrag", SetOnDrag);
 		L.RegFunction("SetOnDragStart", SetOnDragStart);
 		L.RegFunction("Set3DOnClick", Set3DOnClick);
 		L.RegFunction("SetOnPress", SetOnPress);
@@ -831,6 +832,22 @@ public class UnityEngine_GameObjectWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int RemoveUGUIEventListener(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+			obj.RemoveUGUIEventListener();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetOnDragEnd(IntPtr L)
 	{
 		try
@@ -864,7 +881,7 @@ public class UnityEngine_GameObjectWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int SetOnDarg(IntPtr L)
+	static int SetOnDrag(IntPtr L)
 	{
 		try
 		{
@@ -874,7 +891,7 @@ public class UnityEngine_GameObjectWrap
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
 				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
-				obj.SetOnDarg(arg0);
+				obj.SetOnDrag(arg0);
 				return 0;
 			}
 			else if (count == 3)
@@ -882,12 +899,12 @@ public class UnityEngine_GameObjectWrap
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
 				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
 				object arg1 = ToLua.ToVarObject(L, 3);
-				obj.SetOnDarg(arg0, arg1);
+				obj.SetOnDrag(arg0, arg1);
 				return 0;
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.GameObject.SetOnDarg");
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.GameObject.SetOnDrag");
 			}
 		}
 		catch (Exception e)

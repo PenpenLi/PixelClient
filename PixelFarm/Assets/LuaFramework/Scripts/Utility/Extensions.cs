@@ -305,6 +305,45 @@ public static class Extensions
         };
     }
 
+    public static void SetOnDragStart(this Component obj, LuaFunction callback, object args = null)
+    {
+        UGUIEventListener.Get(obj.gameObject).onDragStart = (evt, go, my_args) =>
+        {
+            if (callback != null)
+            {
+                //LuaHelper.GetSoundManager().PlaySound("Shared", "anniu1", ViewHelper.Instance.UICamera.transform.position, 1);
+                callback.Call(obj, evt, go, args);
+                //callback = null;
+            }
+        };
+    }
+
+    public static void SetOnDragEnd(this Component obj, LuaFunction callback, object args = null)
+    {
+        UGUIEventListener.Get(obj.gameObject).onDragEnd = (evt, go, my_args) =>
+        {
+            if (callback != null)
+            {
+                //LuaHelper.GetSoundManager().PlaySound("Shared", "anniu1", ViewHelper.Instance.UICamera.transform.position, 1);
+                callback.Call(obj, evt, go, args);
+                //callback = null;
+            }
+        };
+    }
+
+    public static void SetOnDrag(this Component obj, LuaFunction callback, object args = null)
+    {
+        UGUIEventListener.Get(obj.gameObject).onDrag = (evt, go, delta, my_args) =>
+        {
+            if (callback != null)
+            {
+                //LuaHelper.GetSoundManager().PlaySound("Shared", "anniu1", ViewHelper.Instance.UICamera.transform.position, 1);
+                callback.Call(obj, evt, go, delta, args);
+                //callback = null;
+            }
+        };
+    }
+
     /// <summary>
     /// 主要用于UI界面的双击事件，并只有效一次回调
     /// </summary>
@@ -481,7 +520,7 @@ public static class Extensions
         };
     }
 
-    public static void SetOnDarg(this GameObject obj, LuaFunction callback, object args = null)
+    public static void SetOnDrag(this GameObject obj, LuaFunction callback, object args = null)
     {
         UGUIEventListener.Get(obj).onDrag = (evt, go, data, my_args) =>
         {
@@ -503,6 +542,11 @@ public static class Extensions
                 //callback = null;
             }
         };
+    }
+
+    public static void RemoveUGUIEventListener(this GameObject obj)
+    {
+        UGUIEventListener.Remove(obj);
     }
 
     /// <summary>

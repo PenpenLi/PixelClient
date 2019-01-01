@@ -79,7 +79,14 @@ end
 function ViewBase:Hide()
     self.isHiding = true
     if self.gameObject then
-        self.gameObject.gameObject:SetActive(false)
+        self.gameObject:SetActive(false)
+    end
+end
+
+function ViewBase:Show()
+    self.isHiding = false
+    if self.gameObject then
+        self.gameObject:SetActive(true)
     end
 end
 

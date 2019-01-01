@@ -9,12 +9,18 @@ function _M:OnCreate()
     self.ctrlBtn:SetOnClick(function ()
         self:OnCtrlClick()
     end)
+    self.townCenterBtn = self.transform:Find("townCenterBtn").gameObject
+    self.townCenterBtn:SetOnClick(function ()
+        self:OnTownCenterClick()
+    end)
 
     self.ctrlBlock = self:InitCtrlBlock(self.transform, "ctrlGroup")
     self.playerBlock = self:InitPlayerBlock(self.transform, "LT")
     self.coinBlock = self:InitCoinBlock(self.transform, "RT")
 
     self:InitData()
+
+    self.iCtrl:ShowTownCenter()
 end
 
 function _M:InitData()
@@ -115,12 +121,18 @@ function _M:OnCtrlClick()
     end
 end
 
+function _M:OnTownCenterClick()
+    self.iCtrl:ShowTownCenter()
+    self.townCenterBtn:SetActive(false)
+end
+
 function _M:OnBuildingClick()
     self.iCtrl:ShowBuilding()
 end
 
 function _M:OnFarmClick()
     self.iCtrl:ShowFarm()
+    self.townCenterBtn:SetActive(true)
 end
 
 function _M:OnFactoryClick()

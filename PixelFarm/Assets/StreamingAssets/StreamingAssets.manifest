@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 742289784
+CRC: 3472543465
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -40,11 +40,17 @@ AssetBundleManifest:
       Name: mine_prefab.unity3d
       Dependencies: {}
     Info_12:
-      Name: tech_prefab.unity3d
+      Name: storage_prefab.unity3d
       Dependencies: {}
     Info_13:
-      Name: train_prefab.unity3d
+      Name: tech_prefab.unity3d
       Dependencies: {}
     Info_14:
+      Name: town_prefab.unity3d
+      Dependencies: {}
+    Info_15:
+      Name: train_prefab.unity3d
+      Dependencies: {}
+    Info_16:
       Name: zoo_prefab.unity3d
       Dependencies: {}

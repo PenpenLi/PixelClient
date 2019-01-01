@@ -4,7 +4,7 @@ local _M = class(CtrlBase)
 
 function _M:StartView()
     print("_MainCtrl startView ~~~~~~~")
-    ViewManager:Start(self, MoudleNames.Main, MainViewNames.Main, PANEL_HIGH(), self.args)
+    ViewManager:Start(self, MoudleNames.Main, MainViewNames.Main, PANEL_MID(), self.args)
     
     self.ctrlCache = {}
 
@@ -15,6 +15,10 @@ end
 
 function _M:CurrentPlayer()
     return PlayerInterface:CurrentPlayer()
+end
+
+function _M:ShowTownCenter()
+    self:OpenCtrl(MoudleNames.Town, TownCtrlNames.Town)
 end
 
 function _M:ShowBuilding()

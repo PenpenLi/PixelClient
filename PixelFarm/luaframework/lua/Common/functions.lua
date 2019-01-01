@@ -5,6 +5,31 @@ function tabStr(data)
 	return json.encode(data)
 end
 
+-- 字符串 转 table
+function strTab(str)
+	return json.decode(str)
+end
+
+-- 是否包含key
+function isTableContainsKey(key, tab)
+    for k,v in ipairs(tab) do
+      if k == key then
+          return true
+      end
+    end
+    return false
+end
+
+-- 是否包含value
+function isTableContainsValue(value, tab)
+    for k,v in ipairs(tab) do
+      if v == value then
+          return true
+      end
+    end
+    return false
+end
+
 --输出日志--
 function log(str)
     Util.Log(str);
